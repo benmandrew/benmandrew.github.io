@@ -10,25 +10,27 @@ layout: default
   {{ content }}
 
   {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
-    <ul class="post-list">
+    <ul class="post-list row">
       {%- for post in site.posts -%}
-      <li>
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
+        <li class="col-md-6" style="margin-bottom:15px">
+          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+          <a class="card h-100" href="{{ post.url | relative_url }}">
+            <img src="{{ post.header }}" class="card-img-top-custom">
+            <div class="card-body">
+              <h5 class="card-title">{{ post.title | escape }}</h5>
+              <div class="row">
+                <p class="card-subtitle text-muted col-6">{{ post.date | date: date_format }}</p>
+                <p class="card-subtitle text-muted col-6" align="right"><strong>Tag</strong></p>
+              </div>
+            </div>
           </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
-      </li>
+        </li>
       {%- endfor -%}
     </ul>
 
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+
+
+
   {%- endif -%}
 
 </div>

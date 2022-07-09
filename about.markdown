@@ -22,6 +22,8 @@ Email - <a href="mailto:benmandrew@gmail.com">benmandrew@gmail.com</a>
 
 ---
 
+<div style="padding-top: 1em;"></div>
+
 # À Propos de Moi
 
 Salut, je m'appelle Ben. Je suis étudiant en informatique et programmeur avec des expérience professionnel en génie logiciel et en science des données.
