@@ -3,7 +3,7 @@ layout:     post
 title:      "Dissertation Project: Delay-Tolerant Link-State Routing"
 date:       2022-05-16
 categories: articles
-header:     /assets/headers/dtlsr.png
+header:     headers/dtlsr.png
 ---
 
 This is my third-year dissertation project for the University of Cambridge Computer Science Tripos. The project is to evaluate and compare the performance of routing protocols LSR and DTLSR in a variety of network topologies and situations, to determine where delay-tolerant modifications improve or worsen performance. Both protocols are modelled off of standard OSPF, but implemented completely from scratch.

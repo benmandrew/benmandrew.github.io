@@ -14,8 +14,8 @@ layout: default
       {%- for post in site.posts -%}
         <li class="col-md-6" style="margin-bottom:15px">
           {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-          <a class="card h-100" href="{{ post.url | relative_url }}">
-            <img src="{{ post.header }}" class="card-img-top-custom">
+          <a class="card h-100" href="{{ post.url }}">
+            <img src="{{ site.s3_path }}/{{ post.header }}" class="card-img-top-custom">
             <div class="card-body">
               <h5 class="card-title">{{ post.title | escape }}</h5>
               <div class="row">

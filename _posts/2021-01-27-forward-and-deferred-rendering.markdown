@@ -3,7 +3,7 @@ layout:     post
 title:      "Forward and Deferred Rendering"
 date:       2021-01-27
 categories: articles
-header:     /assets/headers/fdr.jpg
+header:     headers/fdr.jpg
 ---
 
 <div class="videoWrapper" style="text-align: center;">

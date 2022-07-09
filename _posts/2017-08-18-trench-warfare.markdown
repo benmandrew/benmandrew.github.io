@@ -3,7 +3,7 @@ layout:     post
 title:      "Trench Warfare"
 date:       2017-08-18
 categories: articles
-header:     /assets/headers/trench.jpg
+header:     headers/trench.jpg
 ---
 
 
