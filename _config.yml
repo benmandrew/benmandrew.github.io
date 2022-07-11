@@ -29,6 +29,8 @@ url: "http://benmandrew.com" # the base hostname & protocol for your site, e.g. 
 twitter_username: benmandrew
 github_username:  benmandrew
 
+timezone: Europe/London
+
 # Build settings
 theme: minima
 plugins:
