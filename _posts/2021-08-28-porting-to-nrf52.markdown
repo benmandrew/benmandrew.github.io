@@ -4,6 +4,8 @@ title:      "Porting OCaml to the nRF52 Microcontroller"
 date:       2021-08-28
 categories: articles
 header:     headers/nrf52.jpg
+tag:        "Talk"
+header_rendering: auto
 ---
 
 <div class="videoWrapper">

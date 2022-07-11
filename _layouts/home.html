@@ -10,26 +10,26 @@ layout: default
   {{ content }}
 
   {%- if site.posts.size > 0 -%}
-    <ul class="post-list row">
-      {%- for post in site.posts -%}
-        <li class="col-md-6" style="margin-bottom:15px">
-          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-          <a class="card h-100" href="{{ post.url }}">
-            <img src="{{ site.s3_path }}/{{ post.header }}" class="card-img-top-custom">
-            <div class="card-body">
-              <h5 class="card-title">{{ post.title | escape }}</h5>
-              <div class="row">
-                <p class="card-subtitle text-muted col-6">{{ post.date | date: date_format }}</p>
-                <p class="card-subtitle text-muted col-6" align="right"><strong>Tag</strong></p>
-              </div>
-            </div>
-          </a>
-        </li>
-      {%- endfor -%}
-    </ul>
-
-
-
+  
+  <ul class="post-list row">
+    {%- for post in site.posts -%}
+    <li class="col-md-6" style="margin-bottom:15px">
+      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+      <a class="card h-100" href="{{ post.url }}">
+        <img src="{{ site.s3_path }}/{{ post.header }}"
+          class="card-img-top-custom"
+          style="image-rendering: {{ post.header_rendering }};">
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title | escape }}</h5>
+          <div class="row">
+            <p class="card-subtitle text-muted col-6">{{ post.date | date: date_format }}</p>
+            <p class="card-subtitle text-muted col-6" align="right"><strong>{{ post.tag }}</strong></p>
+          </div>
+        </div>
+      </a>
+    </li>
+    {%- endfor -%}
+  </ul>
 
   {%- endif -%}
 

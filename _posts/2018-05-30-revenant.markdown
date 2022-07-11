@@ -1,0 +1,54 @@
+---
+layout:     post
+title:      "Revenant"
+date:       2018-05-30
+categories: articles
+header:     headers/revenant.jpeg
+tag:        "Game"
+header_rendering: auto
+---
+
+<script src="{{ site.s3_path }}/revenant/UnityLoader.js"></script>
+<script>
+var loaded = false;
+function load_unity() {
+  if (loaded) {
+    return;
+  }
+  document.getElementById("load_button").style.display = "hidden";
+  document.getElementById("load_image").style.display = "hidden";
+  var unityInstance = UnityLoader.instantiate("unityContainer", "{{ site.s3_path }}/revenant/revenant.json");
+  loaded = true;
+}
+</script>
+
+<div class="webgl-content" style="padding: 20px 0px 30px 0px;">
+<div id="unityContainer" onclick="load_unity()" style="width: 100%; height: 100%; border: 3px solid gray; margin: auto; text-align: center; overflow: hidden;">
+<div style="position: relative;">
+<h3 class="centered" id="load_button">Click to load</h3>
+<img src="{{ site.s3_path }}/revenant/background.jpeg" class="img-fluid-background" id="load_image">
+</div>
+</div>
+</div>
+
+A largely unfinished project that I've abandoned, so please don't judge too harshly :)
+
+While very incomplete, it's still kind of fun by itself. There are most likely many bugs.
+
+##### Instructions:
+
+- WASD to move, move mouse to aim.
+- Fire continuously by holding the left mouse button.
+- Pickup powerups after each wave by pressing E when over them.
+- If you have a powerup, press SPACE to activate it.
+- Get to the highest wave possible!
+
+##### Enemies:
+
+- Zombies chase you directly and try to overwhelm you by sheer numbers.
+- Bats move fast and try to hit you in fly-by attacks.
+- Jumpers teleport around the map, shooting fireballs at you whenever they can.
+- Bloaters look exactly like zombies, except on death they explode into a cloud of poisonous gas.
+- Shields give their protection to other enemies, making them invincible until the shield is dealt with.
+
+##### <a href="https://github.com/benmandrew/Revenant">Link to GitHub repository</a>

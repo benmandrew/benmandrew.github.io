@@ -1,0 +1,81 @@
+---
+layout:     post
+title:      "Cryogen"
+date:       2020-04-21
+categories: articles
+header:     headers/cryogen.jpeg
+tag:        "Game Jam Entry"
+header_rendering: auto
+---
+
+<script src="{{ site.s3_path }}/cryogen/UnityLoader.js"></script>
+<script>
+var unityInstance = UnityLoader.instantiate("unityContainer", "{{ site.s3_path }}/cryogen/build.json");
+</script>
+
+<div class="webgl-content" style="padding: 20px 0px 30px 0px;">
+<div id="unityContainer" style="width: 100%; height: 100%; border: 3px solid gray; margin: auto;"></div>
+</div>
+
+Defend the cryo-pod against waves of mutants and keep the heart alive, with a blend of tower defence and FPS!
+
+##### Controls:
+
+- WASD to move, move mouse to aim, shoot with the left mouse button.
+- R to reload, and Q to switch weapons.
+- Pick up turret blueprints by looking at them and pressing E, then place down turrets with E on the greyed out spheres.
+
+A submission for the Ludum Dare 46 Game Jam, made in Unity, and completed over 72 hours with a couple of friends. Genuinely an amazing and intense experience, and we're very proud of ourselves for making it through!
+
+##### <a href="https://ldjam.com/events/ludum-dare/46/cryogen">Link to our Ludum Dare submission page</a>
+
+##### <a href="https://github.com/benmandrew/Cryogen">Link to GitHub repository</a>
+
+---
+
+##### Download executable:
+
+<div class="row">
+<div class="col-4">
+<a href="{{ site.s3_path }}/cryogen/windows_build.zip">
+<p style="display:inline-block;">Windows </p>
+<img src="{{ site.s3_path }}/cryogen/windows.png" style="display:inline-block;">
+</a>
+</div>
+
+<div class="col-4">
+<a href="{{ site.s3_path }}/cryogen/linux_build.zip">
+<p style="display:inline-block;">Linux </p>
+<img src="{{ site.s3_path }}/cryogen/linux.png" style="display:inline-block;">
+</a>
+</div>
+
+<div class="col-4">
+<a href="{{ site.s3_path }}/cryogen/osx_build.zip">
+<p style="display:inline-block;">OSX </p>
+<img src="{{ site.s3_path }}/cryogen/osx.png" style="display:inline-block;">
+</a>
+</div>
+</div>
+
+---
+
+<div class="row">
+<div class="col-lg-4">
+<a href="{{ site.s3_path }}/cryogen/scr1.jpeg">
+<img src="{{ site.s3_path }}/cryogen/scr1_mini.jpeg" class="img-fluid">
+</a>
+</div>
+
+<div class="col-lg-4">
+<a href="{{ site.s3_path }}/cryogen/scr2.jpeg">
+<img src="{{ site.s3_path }}/cryogen/scr2_mini.jpeg" class="img-fluid">
+</a>
+</div>
+
+<div class="col-lg-4">
+<a href="{{ site.s3_path }}/cryogen/scr3.jpeg">
+<img src="{{ site.s3_path }}/cryogen/scr3_mini.jpeg" class="img-fluid">
+</a>
+</div>
+</div>

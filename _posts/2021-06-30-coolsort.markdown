@@ -4,6 +4,8 @@ title:      "CoolSort, or Cache Access Pattern Optimisation"
 date:       2021-06-30
 categories: articles
 header:     headers/coolsort.png
+tag:        "Article"
+header_rendering: pixelated
 ---
 
 When programming in a language like C, assembly, or even machine code, we treat treat memory simply as a huge, linear array, uniformly accessed at all locations. While this is an incredibly useful abstraction for most software, for performant programs it is a very naïve view of things. Critically it ignores the presence of **caches**.

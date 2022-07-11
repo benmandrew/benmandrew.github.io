@@ -4,6 +4,8 @@ title:      "Graphics Rejects"
 date:       2019-05-19
 categories: articles
 header:     headers/reject.jpg
+tag:        "Article"
+header_rendering: auto
 ---
 
 Various mistakes I’ve made while working on graphics projects.

@@ -4,8 +4,16 @@ title:      "Trench Warfare"
 date:       2017-08-18
 categories: articles
 header:     headers/trench.jpg
+tag:        "Game"
+header_rendering: pixelated
 ---
 
+<head>
+<script src="{{ site.s3_path }}/trench/UnityLoader.js"></script>
+<script>
+var unityInstance = UnityLoader.instantiate("unityContainer", "{{ site.s3_path }}/trench/trench.json");
+</script>
+</head>
 
 <div class="webgl-content" style="padding: 20px 0px 30px 0px;">
   <div id="unityContainer" style="width: 100%; height: 100%; border: 3px solid gray; margin: auto;"></div>

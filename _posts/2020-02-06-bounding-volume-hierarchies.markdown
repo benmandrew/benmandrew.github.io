@@ -4,6 +4,8 @@ title:      "Ray-tracing with Bounding Volume Hierarchies"
 date:       2020-02-06
 categories: articles
 header:     headers/bvh.jpg
+tag:        "Article"
+header_rendering: auto
 ---
 
 When naively raytracing (with triangle primitives), for n rays and m triangles there are mn intersection tests, as every ray must check for intersection with every triangle in the scene (ignoring triangle culling).

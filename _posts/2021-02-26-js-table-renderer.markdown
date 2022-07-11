@@ -4,9 +4,13 @@ title:      "Javascript 3D Renderer"
 date:       2021-02-26
 categories: articles
 header:     headers/js_renderer.png
+tag:        "Interactive Project"
+header_rendering: pixelated
 ---
 
 <script src="/assets/table.js"></script>
+
+Warning: this renderer uses 100% of the browser's JS thread when running; most computers should be fine but running it on my (admittedly crap) phone crashes the browser. Maybe try out the 'Step Once' button if you're the cautious type ;)
 
 <div class="row mb-2">
 <button class="col-5 m-auto" onclick="toggleRendering()">Start / Pause</button>
@@ -25,9 +29,7 @@ Little-known fact: a HTML table is just a rectangular grid of cells. You can set
 
 This started out as a joke, but after weeks of bashing my head against the wall with perspective-correct interpolation and homogeneous coordinate transforms, it  turns out it's actually not that funny. It was however a good way to learn about the inner workings of rasterisation rendering, especially the parts that the GPU typically hides from you. I'd like to go over some of the specific things that I find are usually never mentioned in tutorials or explanations.
 
-If you'd like to see the code, you can either look at the repo on [GitHub](https://github.com/benmandrew/JSTableRenderer), or if you're on Chrome, press F12, go to the sources tab, and look in the **/static/js/** path for the actual JS code being run.
-
-p.s. If you're about to read on, you may want to pause the renderer above: it likes to use 100% of the browser's JS thread :)
+If you'd like to see the code, you can either look at the repo on [GitHub](https://github.com/benmandrew/JSTableRenderer), or if you're on Chrome, press F12, go to the sources tab, and look in the **/assets/** path for the actual JS code being run.
 
 ## Points vs. Directions in Homogeneous space
 

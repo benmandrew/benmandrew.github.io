@@ -4,6 +4,8 @@ title:      "Writing a Bézier Curve Plotter"
 date:       2018-04-21
 categories: articles
 header:     headers/bezier.jpg
+tag:        "Article"
+header_rendering: auto
 ---
 
 Bezier curves are a rather nice looking model of parametric curves, and while they undoubtedly have many practical uses, I mainly just like the look of them (especially when visualising the construction process), so what I’ll be writing is an almost screensaver-like program that randomly generates bezier curves, and draws them over a period of time, until it finishes and moves onto drawing the next random curve.

@@ -4,6 +4,14 @@ title:      "Forward and Deferred Rendering"
 date:       2021-01-27
 categories: articles
 header:     headers/fdr.jpg
+tag:        "Talk"
+header_rendering: auto
+---
+
+A talk given to my fellow Cambridge computer scientists on January 27th 2021, as part of the yearly Churchill College Computer Science Talks series.
+
+The recording unfortunately starts a few seconds after the beginning of the talk, but it doesn't impact it too much.
+
 ---
 
 <div class="videoWrapper" style="text-align: center;">
@@ -11,10 +19,6 @@ header:     headers/fdr.jpg
 </div>
 
 ---
-
-A talk given to my fellow Cambridge computer scientists on January 27th 2021, as part of the yearly Churchill College Computer Science Talks series.
-
-The recording unfortunately starts a few seconds after the beginning of the talk, but it doesn't impact it too much.
 
 ##### Abstract:
 
@@ -33,5 +37,5 @@ The recording unfortunately starts a few seconds after the beginning of the talk
 
 ##### Links:
 
-- [Slide deck](https://mainbucketbenandrew.s3.eu-west-2.amazonaws.com/fdr/forward-and-deferred-rendering.pdf)
+- [Slide deck]({{ site.s3_path }}/fdr/forward-and-deferred-rendering.pdf)
 - [Header image by Paul Siedler](https://www.artstation.com/artwork/BR3rl)

@@ -4,9 +4,11 @@ title:      "Field-of-view in a Tile-based World"
 date:       2020-01-06
 categories: articles
 header:     headers/visibility.jpg
+tag:        "Article"
+header_rendering: pixelated
 ---
 
-One of my favourite parts of roguelikes is exploring the dungeon, revealing the map over time. It's a great way to show the player's progress, as well as creating tension in the claustrophobic environment. Having this feature in my roguelike game <a href="https://github.com/benmandrew/Andleite">Ändleite</a> was a must.
+One of my favourite parts of roguelikes is exploring the dungeon, revealing the map over time. It's a great way to show the player's progress, as well as creating tension in the claustrophobic environment.
 
 ---
 
