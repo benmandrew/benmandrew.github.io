@@ -6,6 +6,7 @@ categories: articles
 header:     headers/revenant.jpeg
 tag:        "Game"
 header_rendering: auto
+banner: false
 ---
 
 <script src="{{ site.s3_path }}/revenant/UnityLoader.js"></script>

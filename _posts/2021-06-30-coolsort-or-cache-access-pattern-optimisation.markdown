@@ -6,11 +6,12 @@ categories: articles
 header:     headers/coolsort.png
 tag:        "Article"
 header_rendering: pixelated
+banner: true
 ---
 
 When programming in a language like C, assembly, or even machine code, we treat treat memory simply as a huge, linear array, uniformly accessed at all locations. While this is an incredibly useful abstraction for most software, for performant programs it is a very naïve view of things. Critically it ignores the presence of **caches**.
 
-<img src="{{ site.s3_path }}/coolsort/hierarchy.png" class="img-fluid">
+<img src="{{ site.s3_path }}/coolsort/hierarchy.png" class="img-fluid" style="width: 50%">
 
 A fundamental tradeoff of memory is that bigger memories are generally slower to access. So while gigabytes and gigabytes of RAM are wonderful for storing lots of useful data, actually accessing that data is cripplingly slow, taking hundreds of CPU cycles. This in combination with the fact that practically all programs are constantly manipulating data means that we are being massively bottlenecked by memory access latency.
 

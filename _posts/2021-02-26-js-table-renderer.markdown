@@ -6,6 +6,7 @@ categories: articles
 header:     headers/js_renderer.png
 tag:        "Interactive Project"
 header_rendering: pixelated
+banner: false
 ---
 
 <script src="/assets/table.js"></script>
@@ -46,7 +47,7 @@ For point vectors we set *w=1*, and for direction vectors we set *w=0*.
 
 To understand this change let's look at the general translation matrix application.
 
-<img src="{{ site.s3_path }}/js_renderer/translation.png" class="img-fluid">
+<img src="{{ site.s3_path }}/js_renderer/translation.png" class="img-fluid" style="width: 50%">
 
 This super simple formulation means that point vectors (with *w=1*) get translated, and direction vectors (with *w=0*) are left unchanged.
 
@@ -56,12 +57,12 @@ The properties of a particular model are usually given per-vertex. Examples incl
 result in some very weird-looking textures...
 
 
-<img src="{{ site.s3_path }}/js_renderer/side_incorrect.png" class="img-fluid">
+<img src="{{ site.s3_path }}/js_renderer/side_incorrect.png" class="img-fluid" style="width: 50%">
 
 This happens because the barycentric interpolation assumes that the triangle is in 2D, i.e. that all points on the triangle are at the same depth from the camera. However this is obviously not true, and it changes the code required by quite a bit. The maths is quite involved, so I recommend looking at this article [here](https://www.scratchapixel.com/lessons/3d-basic-rendering/rasterization-practical-implementation/perspective-correct-interpolation-vertex-attributes), and giving implementing it a go. It's practically the only source I've found that even mentions perspective-correct interpolation, let alone giving instructions.
 
 
-<img src="{{ site.s3_path }}/js_renderer/side_correct.png" class="img-fluid">
+<img src="{{ site.s3_path }}/js_renderer/side_correct.png" class="img-fluid" style="width: 50%">
 
 ## Clip, NDC, and Screen Space
 
@@ -79,14 +80,14 @@ The issue here is the *w* component of the vector. We usually treat it as invari
 This 'perspective division' is not done as part of the matrix multiplication, it is one of the hidden steps between the vertex and fragment shaders. One of the other hidden steps is necessitated by the fact that we're currently restricting ourself to a cube extending from *-1* to *1* in all axes. This is very nice for transformations and the like, but not very useful for rasterising fragments to put to the screen.
 
 
-<img src="{{ site.s3_path }}/js_renderer/ndc.jpeg" class="img-fluid">        
+<img src="{{ site.s3_path }}/js_renderer/ndc.jpeg" class="img-fluid" style="width: 50%">        
 
 Converting our space to be the right dimensions for the screen is suprisingly easy. We just want to map the x axis from *[-1, 1]* to *[0, screen_width]* and the y axis from *[-1, 1]* to *[0, screen_height]*.
 
 
-<img src="{{ site.s3_path }}/js_renderer/screen.jpeg" class="img-fluid">
+<img src="{{ site.s3_path }}/js_renderer/screen.jpeg" class="img-fluid" style="width: 50%">
 
-<img src="{{ site.s3_path }}/js_renderer/screen_transform.png" class="img-fluid">
+<img src="{{ site.s3_path }}/js_renderer/screen_transform.png" class="img-fluid" style="width: 50%">
 
 We still need the depth (*z* component) in order to pass the z-test, so we can leave that component alone in the transformation.
 
@@ -94,4 +95,4 @@ Thus, we overall create a pipeline of transformations, each transitioning from o
 
 <img src="{{ site.s3_path }}/js_renderer/pipeline.jpeg" class="img-fluid" style="max-width: 80%">
 
-The MVP matrix takes us from the model's space to <u>Clip space</u>, with unnormalised homogeneous coordinates. Normalising these coordinates by perspective division takes us to <u>Normalised-Device-Coordinate (NDC) space</u>, and scaling to the dimensions of the screen takes us to <u>Screen space</u>, where rasterisation can finally occur.
+The MVP matrix takes us from the model's space to *Clip space*, with unnormalised homogeneous coordinates. Normalising these coordinates by perspective division takes us to *Normalised-Device-Coordinate (NDC) space*, and scaling to the dimensions of the screen takes us to *Screen space*, where rasterisation can finally occur.

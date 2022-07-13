@@ -6,10 +6,11 @@ categories: articles
 header:     headers/connect4.png
 tag:        "Interactive Project"
 header_rendering: pixelated
+banner: true
+---
+
+##### Press the green play button!
+
 ---
 
 <iframe height="800px" width="100%" src="https://repl.it/@mirrorworld/Connect-4-With-AI?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
-
----
-
-##### The algorithm is described [here](https://roadtolarissa.com/connect-4-ai-how-it-works/).

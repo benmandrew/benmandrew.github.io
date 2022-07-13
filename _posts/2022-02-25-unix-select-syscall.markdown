@@ -6,6 +6,7 @@ categories: articles
 header:     headers/select.png
 tag:        "Article"
 header_rendering: auto
+banner: false
 ---
 
 Often in our programs we want to be able to respond to external events, with distinct responses for distinct events. We may want to wait for a timer to fire, wait to receive some data from the network, or wait for a keypress. One option is to use a 'busy-loop', checking each of our events in turn - handling them if they've occurred - then going right back to the start and doing it all over again. This is a massive waste of CPU power, as the processor is checking over and over again with tiny intervals inbetween, hogging CPU time from other processes that may actually be doing something useful.

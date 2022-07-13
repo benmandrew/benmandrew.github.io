@@ -6,6 +6,7 @@ categories: articles
 header:     headers/cosmic.jpg
 tag:        "Game Jam Entry"
 header_rendering: auto
+banner: false
 ---
 
 

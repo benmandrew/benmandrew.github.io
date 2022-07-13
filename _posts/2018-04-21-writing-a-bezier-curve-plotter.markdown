@@ -6,6 +6,7 @@ categories: articles
 header:     headers/bezier.jpg
 tag:        "Article"
 header_rendering: auto
+banner: true
 ---
 
 Bezier curves are a rather nice looking model of parametric curves, and while they undoubtedly have many practical uses, I mainly just like the look of them (especially when visualising the construction process), so what I’ll be writing is an almost screensaver-like program that randomly generates bezier curves, and draws them over a period of time, until it finishes and moves onto drawing the next random curve.
@@ -23,7 +24,7 @@ To construct the curve, we first need an ordered list of ‘construction’ poin
 ---
 
 <div class="img-caption">
-<img src="{{ site.s3_path }}/bezier/top_layer.png" class="img-fluid">
+<img src="{{ site.s3_path }}/bezier/top_layer.png" class="img-fluid" style="width: 40%">
   <p>Construction points</p>
 </div>
 
@@ -34,7 +35,7 @@ For this example, lets use 3 construction points. Each adjacent pair of construc
 ---
 
 <div class="img-caption">
-<img src="{{ site.s3_path }}/bezier/linear.gif" class="img-fluid">
+<img src="{{ site.s3_path }}/bezier/linear.gif" class="img-fluid" style="width: 40%">
   <p>Linearly interpolating between two points</p>
 </div>
 
@@ -51,7 +52,7 @@ It turns out that even though the ‘parents’ may not be stationary, we can st
 ---
 
 <div class="img-caption">
-<img src="{{ site.s3_path }}/bezier/quadratic.gif" class="img-fluid">
+<img src="{{ site.s3_path }}/bezier/quadratic.gif" class="img-fluid" style="width: 40%">
   <p>Quadratic bezier curve (2nd order)</p>
 </div>
 
@@ -66,7 +67,7 @@ At each of our discrete time-steps, the positions of the points are calculated f
 ---
 
 <div class="img-caption">
-<img src="{{ site.s3_path }}/bezier/hierarchy.png" class="img-fluid">
+<img src="{{ site.s3_path }}/bezier/hierarchy.png" class="img-fluid" style="width: 50%">
   <p>Layer hierarchy</p>
 </div>
 
@@ -135,12 +136,12 @@ Drawing the curve can either be done at the very end, after all of the computati
 
 <div class="row">
   <div class="img-caption col-md-6">
-  <img src="{{ site.s3_path }}/bezier/order2.gif" class="img-fluid">
+  <img src="{{ site.s3_path }}/bezier/order2.gif" class="img-fluid" style="width: 50%">
     <p>2nd order curve</p>
   </div>
 
   <div class="img-caption col-md-6">
-  <img src="{{ site.s3_path }}/bezier/order4.gif" class="img-fluid">
+  <img src="{{ site.s3_path }}/bezier/order4.gif" class="img-fluid" style="width: 100%">
     <p>4th order curve</p>
   </div>
 </div>
@@ -154,7 +155,7 @@ Drawing the curve can either be done at the very end, after all of the computati
 - [Here](https://github.com/benmandrew/BezierCurve3D) is another bezier curve plotter, except using the Unity3D Engine. This I made much more recently, so it might be good to look at.
 
 <div class="img-caption">
-  <img src="{{ site.s3_path }}/bezier/unity.png" class="img-fluid">
+  <img src="{{ site.s3_path }}/bezier/unity.png" class="img-fluid" style="width: 50%">
   <p>Unity3D bezier curve, without rendering construction lines<br>
   <a href="#">Here's an interactive example!</a></p>
 </div>

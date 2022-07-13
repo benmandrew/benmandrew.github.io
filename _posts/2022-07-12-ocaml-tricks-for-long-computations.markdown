@@ -6,9 +6,10 @@ categories: articles
 tag:        "Article"
 header:     headers/ocaml_tricks.png
 header_rendering: auto
+banner: true
 ---
 
-When running long computations in OCaml - typically deep recursive calls - it is common to run into issues that cause crashes; you may have run into a `Stack_overflow` exception or just straight-up run out of memory. In a high-level language like OCaml it's not always obvious why these errors occur and how one should fix them.
+When running long computations in OCaml---typically deep recursive calls---it is common to run into issues that cause crashes; you may have run into a `Stack_overflow` exception or just straight-up run out of memory. In a high-level language like OCaml it's not always obvious why these errors occur and how one should fix them.
 
 I recently wrote an LZW compressor that compresses ASCII text files. During development I ran into the issues described above, and so using it as an example will be a good demonstration of how the fixes are implemented and why they're useful in the real world.
 

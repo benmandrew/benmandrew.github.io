@@ -6,6 +6,7 @@ categories: articles
 header:     headers/bezier3d.jpg
 tag:        "Interactive Project"
 header_rendering: auto
+banner: false
 ---
 <head>
 <script src="{{ site.s3_path }}/bezier3d/UnityLoader.js"></script>

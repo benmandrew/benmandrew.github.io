@@ -6,6 +6,7 @@ categories: articles
 header:     headers/lux.png
 tag:        "A-level Coursework"
 header_rendering: pixelated
+banner: true
 ---
 
 This is my A-level computer science coursework. The project was to write a 3D ray-tracer that renders triangle meshes, using a bounding volume hierarchy to accelerate the ray-triangle intersections to be logarithmic in the number of triangles rather than linear. With large meshes this reduces the rendering time from minutes to a few seconds.

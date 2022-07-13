@@ -6,6 +6,7 @@ categories: articles
 header:     headers/visibility.jpg
 tag:        "Article"
 header_rendering: pixelated
+banner: false
 ---
 
 One of my favourite parts of roguelikes is exploring the dungeon, revealing the map over time. It's a great way to show the player's progress, as well as creating tension in the claustrophobic environment.

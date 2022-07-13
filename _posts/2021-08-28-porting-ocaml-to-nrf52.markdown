@@ -6,6 +6,7 @@ categories: articles
 header:     headers/nrf52.jpg
 tag:        "Talk"
 header_rendering: auto
+banner: false
 ---
 
 <div class="videoWrapper">

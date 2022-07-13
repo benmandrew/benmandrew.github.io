@@ -6,6 +6,7 @@ categories: articles
 header:     headers/ffmpeg.jpg
 tag:        "Article"
 header_rendering: auto
+banner: true
 ---
 
 Rendering videos yourself sounds challenging, but using FFMPEG makes it incredibly easy.

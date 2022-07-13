@@ -6,6 +6,7 @@ categories: articles
 header:     headers/bvh.jpg
 tag:        "Article"
 header_rendering: auto
+banner: false
 ---
 
 When naively raytracing (with triangle primitives), for n rays and m triangles there are mn intersection tests, as every ray must check for intersection with every triangle in the scene (ignoring triangle culling).

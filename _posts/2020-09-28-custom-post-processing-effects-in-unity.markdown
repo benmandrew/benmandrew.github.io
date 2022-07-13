@@ -6,6 +6,7 @@ categories: articles
 header:     headers/postprocessing.jpg
 tag:        "Article"
 header_rendering: auto
+banner: true
 ---
 
 
@@ -48,7 +49,7 @@ which directly blits the input to the output with no processing, essentially doi
 
 We start by creating an 'Image Effect Shader' asset and a 'Material' asset from Unity's project tab.
 
-<img src="{{ site.s3_path }}/postprocessing/project.png" class="img-fluid">
+<img src="{{ site.s3_path }}/postprocessing/project.png" class="img-fluid" style="max-width: 400px;">
 
 Shaders must be attached to a material in order to be run during a blitting operation.
 
@@ -58,7 +59,7 @@ On opening the shader in a text editor, there is a lot of stuff to see, but ther
 
 In the editor, we can now assign the shader to the material.
 
-<img src="{{ site.s3_path }}/postprocessing/set_mat.png" class="img-fluid">
+<img src="{{ site.s3_path }}/postprocessing/set_mat.png" class="img-fluid" style="max-width: 400px;">
 
 From here the only relevant section is the 'frag' function and variable definition near the bottom.
 
@@ -121,7 +122,7 @@ In the script attached to the camera's GameObject, I add member variables for th
 
 These public member variables are set in the editor.
 
-<img src="{{ site.s3_path }}/postprocessing/camera.png" class="img-fluid">
+<img src="{{ site.s3_path }}/postprocessing/camera.png" class="img-fluid" style="max-width: 400px;">
 
 And with that, you can run the program in the editor and see it work! (Sorry about the laggy video, my recording software is bad)
 
@@ -137,15 +138,17 @@ And with that, you can run the program in the editor and see it work! (Sorry abo
 
 <img src="{{ site.s3_path }}/postprocessing/ripple.jpeg" class="img-fluid">
 
+---
+
 ### Extra: Creating the Noise Texture
 
 While not strictly related to the article, the creation of the noise texture was quite interesting and took a bit of finangling to do.
 
-<img src="{{ site.s3_path }}/postprocessing/noise.png" class="img-fluid"  style="width: 80%; image-rendering: pixelated">
+<img src="{{ site.s3_path }}/postprocessing/noise.png" class="img-fluid"  style="max-width: 350px; width: 80%; image-rendering: pixelated">
 
 The difficulty lay in displacing the UV coordinates in both axes in a dependent way, as would be in real life. I took a greyscale Perlin noise texture from a google search and found the vertical and horizontal numerical derivatives, essentially doing edge detection in both directions. This was done with a <a href="https://en.wikipedia.org/wiki/Sobel_operator">Sobel filter</a>.
 
-<img src="{{ site.s3_path }}/postprocessing/sobel.png" class="img-fluid"  style="width: 100%; image-rendering: pixelated">
+<img src="{{ site.s3_path }}/postprocessing/sobel.png" class="img-fluid"  style="max-width: 400px; width: 100%; image-rendering: pixelated">
 
 These two derivative images, being one channel each, were combined into a single three channel (RGB) image, with the last channel filled with zeroes, as a third channel is required for textures (If you're clever you can put something else in this channel so it doesn't go to waste).
 
