@@ -5,7 +5,7 @@ date:       2022-07-12
 categories: articles
 tag:        "Article"
 header:     headers/ocaml_tricks.png
-header_rendering: auto
+header_rendering: pixelated
 banner: true
 ---
 
