@@ -133,23 +133,23 @@ And the very simple composition of the two.
 
 # Testing Results
 
-Here are the results of some very crude testing, just to give a rough idea of actual performance. The program was compiled using GCC's -O3 optimisation level, and testing was performed on an Intel I7-9750H CPU ([spec sheet](https://ark.intel.com/content/www/us/en/ark/products/191045/intel-core-i7-9750h-processor-12m-cache-up-to-4-50-ghz.html)).
+Here are the results of some crude testing, just to give a rough idea of actual performance. The program was compiled using GCC's -O3 optimisation level, and testing was performed on an Intel I5-5300U CPU ([spec sheet](https://ark.intel.com/content/www/us/en/ark/products/85213/intel-core-i55300u-processor-3m-cache-up-to-2-90-ghz.html)).
 
-Arrays of increasing powers of 2 were sorted, with measurements taken at the millisecond accuracy. This is sufficient for the larger arrays but makes the smaller tests useless as you will see. They are just present for completeness.
+Arrays of increasing powers of 2 were sorted, with measurements taken using the Unix `time` tool.
 
 The logX-Y and X-Y graphs include Insertion sort for comparison of asymptotic running times, but make it hard to compare Mergesort and Coolsort, which is what we're interested in.
 
-<img src="{{ site.s3_path }}/coolsort/logxy.png" class="img-fluid" style="max-width: 500px;">
+<img src="{{ site.s3_path }}/coolsort/logx-y.png" class="img-fluid" style="max-width: 500px;">
 
 The X-Y graph in particular highlights just how bad a running time of O(n<sup>2</sup>) really is.
 
-<img src="{{ site.s3_path }}/coolsort/xy.png" class="img-fluid" style="max-width: 500px;">
+<img src="{{ site.s3_path }}/coolsort/x-y.png" class="img-fluid" style="max-width: 500px;">
 
-We plot the execution time of Coolsort as a percentage of Mergesort's execution time to better compare the two. Ignore the left side of the graph: it is a result of the lack of precision of the timer as discussed above.
+We plot the execution time of Coolsort as a percentage of Mergesort's execution time to better compare the two. We see the error on both measurements by the light blue bounds, showing the lack of precision of the timer.
 
 <img src="{{ site.s3_path }}/coolsort/ratio.png" class="img-fluid" style="max-width: 500px;">
 
-On the reliable right-hand side of the graph, we can see that Coolsort is consistently between 80 and 90% of the running time of Mergesort, which is a comfortable improvement.
+We can see that Coolsort is reliably between 80 and 95% of the running time of Mergesort, which is a comfortable improvement.
 
 ### Useful Links
 

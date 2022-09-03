@@ -14,7 +14,7 @@ I take photos to relax, and have them on <a href="https://www.flickr.com/photos/
 
 Email - <a href="mailto:benmandrew@gmail.com">benmandrew@gmail.com</a>
 
-### <a href="#">Link to current CV</a>
+### <a href="https://benmandrew.s3.eu-west-2.amazonaws.com/CV.pdf">Link to current CV</a>
 
 ---
 
@@ -30,4 +30,4 @@ Je prends des photos pour me détendre, et je les stocke sur <a href="https://ww
 
 Email - <a href="mailto:benmandrew@gmail.com">benmandrew@gmail.com</a>
 
-### <a href="#">Lien à CV actuel</a>
+### <a href="https://benmandrew.s3.eu-west-2.amazonaws.com/CV.pdf">Lien à CV actuel</a>
