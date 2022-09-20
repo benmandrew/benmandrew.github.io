@@ -7,6 +7,7 @@ header:     headers/nrf52.jpg
 tag:        "Talk"
 header_rendering: auto
 banner: false
+fullwidth: true
 ---
 
 <div class="videoWrapper">

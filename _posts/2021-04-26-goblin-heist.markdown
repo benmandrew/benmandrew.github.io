@@ -6,7 +6,7 @@ categories: articles
 header:     headers/goblinheist.png
 tag:        "Game Jam Entry"
 header_rendering: pixelated
-banner: false
+banner: true
 ---
 
 Mine and two friend's entry into the Ludum Dare 48 Game Jam, following the theme 'Deeper and Deeper'. It was built over 72 sleep-deprived hours.

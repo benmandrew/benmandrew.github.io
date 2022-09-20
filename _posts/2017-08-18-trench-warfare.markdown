@@ -7,6 +7,7 @@ header:     headers/trench.jpg
 tag:        "Game"
 header_rendering: pixelated
 banner: false
+fullwidth: true
 ---
 
 <head>

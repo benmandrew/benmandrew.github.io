@@ -7,6 +7,7 @@ header:     headers/reject.jpg
 tag:        "Article"
 header_rendering: auto
 banner: false
+fullwidth: true
 ---
 
 Various mistakes I’ve made while working on graphics projects.

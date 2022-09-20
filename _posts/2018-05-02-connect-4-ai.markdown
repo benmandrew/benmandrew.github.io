@@ -7,6 +7,7 @@ header:     headers/connect4.png
 tag:        "Interactive Project"
 header_rendering: pixelated
 banner: true
+fullwidth: true
 ---
 
 ##### Press the green play button!

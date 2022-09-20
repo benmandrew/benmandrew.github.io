@@ -7,6 +7,7 @@ header:     headers/fdr.jpg
 tag:        "Talk"
 header_rendering: auto
 banner: false
+fullwidth: true
 ---
 
 A talk given to my fellow Cambridge computer scientists on January 27th 2021, as part of the yearly Churchill College Computer Science Talks series.

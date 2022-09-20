@@ -7,6 +7,7 @@ header:     headers/copper.jpg
 tag:        "Interactive Project"
 header_rendering: auto
 banner: false
+fullwidth: true
 ---
 
 <script src="{{ site.s3_path }}/copper/UnityLoader.js"></script>

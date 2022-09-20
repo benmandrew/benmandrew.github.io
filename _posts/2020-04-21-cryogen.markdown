@@ -7,6 +7,7 @@ header:     headers/cryogen.jpeg
 tag:        "Game Jam Entry"
 header_rendering: auto
 banner: false
+fullwidth: true
 ---
 
 <script src="{{ site.s3_path }}/cryogen/UnityLoader.js"></script>

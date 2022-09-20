@@ -7,6 +7,7 @@ header:     headers/bezier3d.jpg
 tag:        "Interactive Project"
 header_rendering: auto
 banner: false
+fullwidth: true
 ---
 <head>
 <script src="{{ site.s3_path }}/bezier3d/UnityLoader.js"></script>

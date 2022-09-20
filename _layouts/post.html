@@ -17,9 +17,15 @@ layout: default
       </time>
   </header>
 
+  {%- if page.fullwidth -%}
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
   </div>
+  {%- else -%}
+  <div class="post-content e-content" itemprop="articleBody" style="max-width: 43.25rem; margin: auto;">
+    {{ content }}
+  </div>
+  {%- endif -%}
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
