@@ -125,7 +125,6 @@ We see in the `Cons` case that we first write the data to file, and then call th
 ### Links
 
 - The LZW coder in question ([https://github.com/benmandrew/Olzw](https://github.com/benmandrew/Olzw)), if you'd like to see how it actually works in practice.
-- The [renderer](https://github.com/benmandrew/Otorus) that produced the header image, as a shameless plug ;)
 
 <div style="padding-top: 1em;"></div>
 
