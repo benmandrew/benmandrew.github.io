@@ -4,8 +4,8 @@ title:      "OCaml Tricks For Long Computations"
 date:       2022-07-12
 categories: articles
 tag:        "Article"
-header:     headers/ocaml_tricks.png
-header_rendering: pixelated
+header:     headers/ocaml_tricks.jpeg
+header_rendering: auto
 banner: true
 ---
 
