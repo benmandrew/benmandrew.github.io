@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+
+{%- if site.posts.size > 0 -%}
+
+<div class="post-list row" style="max-width: 80rem; margin: auto;">
+  {%- for post in site.posts -%}
+  <div class="col-md-6 justify-content-center" style="margin-bottom:15px">
+    {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+    <a class="card h-100" href="{{ post.url }}">
+      <img src="{{ site.s3_path }}/{{ post.header }}"
+        class="card-img-top-custom"
+        style="image-rendering: {{ post.header_rendering }};">
+      <div class="card-body">
+        <h5 class="card-title">{{ post.title | escape }}</h5>
+        <div class="row">
+          <p class="card-subtitle text-muted col-6">{{ post.date | date: date_format }}</p>
+          <p class="card-subtitle text-muted col-6" align="right"><strong>{{ post.tag }}</strong></p>
+        </div>
+      </div>
+    </a>
+  </div>
+  {%- endfor -%}
+</div>
+
+{%- endif -%}

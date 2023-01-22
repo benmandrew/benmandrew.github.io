@@ -24,7 +24,7 @@ email: benmandrew@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Programming blog and portfolio.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://benmandrew.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://benmandrew.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: benmandrew
 github_username:  benmandrew
 

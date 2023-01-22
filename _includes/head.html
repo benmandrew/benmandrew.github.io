@@ -26,6 +26,51 @@
   <meta name="theme-color" content="#ffffff">
 
   <style>
+    .flex-container {
+      /* We first create a flex layout context */
+      display: flex;
+      
+      /* Then we define the flow direction 
+        and if we allow the items to wrap 
+      * Remember this is the same as:
+      * flex-direction: row;
+      * flex-wrap: wrap;
+      */
+      flex-flow: row wrap;
+      
+      /* Then we define how is distributed the remaining space */
+      justify-content: space-around;
+      
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .flex-item {
+      width: 50%;
+      height: 600px;
+      position: relative;
+    }
+
+    .portfolio-tile {
+      padding: 0px;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .portfolio-tile img {
+      /* position: absolute; */
+      height: calc(100% + 10px);
+      width: calc(100% + 20px);
+      object-fit: cover;
+      filter: blur(5px);
+      -webkit-filter: blur(5px);
+      -moz-filter: blur(5px);
+      -o-filter: blur(5px);
+      -ms-filter: blur(5px);
+      margin: -5px -10px -10px -5px;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -47,7 +92,7 @@
       margin-left: auto;
       margin-right: auto;
       /* max-width: 400px; */
-      width: 90%
+      /* width: 90%; */
     }
 
     .img-caption {
