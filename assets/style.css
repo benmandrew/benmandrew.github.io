@@ -1,0 +1,242 @@
+.flex-container {
+  /* We first create a flex layout context */
+  display: flex;
+  
+  /* Then we define the flow direction 
+    and if we allow the items to wrap 
+  * Remember this is the same as:
+  * flex-direction: row;
+  * flex-wrap: wrap;
+  */
+  flex-flow: row wrap;
+  
+  /* Then we define how is distributed the remaining space */
+  justify-content: space-around;
+  
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.flex-item {
+  width: 50%;
+  height: 600px;
+  position: relative;
+}
+
+.portfolio-tile {
+  padding: 0px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.portfolio-tile img {
+  /* position: absolute; */
+  height: calc(100% + 10px);
+  width: calc(100% + 20px);
+  object-fit: cover;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  margin: -5px -10px -10px -5px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+ul.post-list {
+  list-style-type: none;
+}
+
+.img-fluid-header {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    padding-bottom: 20px;
+}
+
+.img-fluid {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* max-width: 400px; */
+  /* width: 90%; */
+}
+
+.img-caption {
+  width: image width px;
+  text-align: center;
+  /* padding: 15px 15px 15px 15px; */
+}
+
+.img-caption p {
+  padding-top: 15px;
+}
+
+.table-renderer th {
+    /* border: 1px solid rgb(207, 207, 207); */
+    height: 10px;
+}
+
+.table-renderer td {
+    /* border: 1px solid rgb(207, 207, 207); */
+    width: 20px;
+    height: 10px;
+}
+
+.card {
+  color: black;
+  text-decoration: none;
+}
+
+.card:hover h5 {
+  color: black;
+  text-decoration: underline;
+}
+
+.card-img-top-custom {
+  height: 350px;
+  /* max-height: 100%; */
+  object-fit: cover;
+}
+
+.videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+.videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a, .topnav a:hover {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a.button:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+.main-window {
+  width: 80%;
+}
+
+@media screen and (max-width: 800px) {
+  .main-window {
+    width: 100%;
+    padding-left: 10%;
+  }
+
+  .side-bar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+.page-content {
+  padding-top: 4em;
+  padding-bottom: 8em;
+  justify-content: space-evenly;
+  width: 75%;
+  margin: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .page-content {
+    padding-top: 4em;
+    padding-bottom: 8em;
+    justify-content: space-evenly;
+    width: 95%;
+    margin: auto;
+  }
+}
+
+/* @media screen and (min-width: 1600px) {
+  .page-content {
+    padding-top: 4em;
+    padding-bottom: 8em;
+    justify-content: space-evenly;
+    width: 1520px;
+    margin: auto;
+  }
+} */
+
+.highlight pre { background-color: #e3f2ff; border: 10px solid #e3f2ff; }
+.highlight .hll { background-color: #ffffcc }
+.highlight .c { color: #008000 } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #0000ff } /* Keyword */
+.highlight .cm { color: #008000 } /* Comment.Multiline */
+.highlight .cp { color: #0000ff } /* Comment.Preproc */
+.highlight .c1 { color: #008000 } /* Comment.Single */
+.highlight .cs { color: #008000 } /* Comment.Special */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gh { font-weight: bold } /* Generic.Heading */
+.highlight .gp { font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { font-weight: bold } /* Generic.Subheading */
+.highlight .kc { color: #0000ff } /* Keyword.Constant */
+.highlight .kd { color: #0000ff } /* Keyword.Declaration */
+.highlight .kn { color: #0000ff } /* Keyword.Namespace */
+.highlight .kp { color: #0000ff } /* Keyword.Pseudo */
+.highlight .kr { color: #0000ff } /* Keyword.Reserved */
+.highlight .kt { color: #2b91af } /* Keyword.Type */
+.highlight .s { color: #a31515 } /* Literal.String */
+.highlight .nc { color: #2b91af } /* Name.Class */
+.highlight .ow { color: #0000ff } /* Operator.Word */
+.highlight .sb { color: #a31515 } /* Literal.String.Backtick */
+.highlight .sc { color: #a31515 } /* Literal.String.Char */
+.highlight .sd { color: #a31515 } /* Literal.String.Doc */
+.highlight .s2 { color: #a31515 } /* Literal.String.Double */
+.highlight .se { color: #a31515 } /* Literal.String.Escape */
+.highlight .sh { color: #a31515 } /* Literal.String.Heredoc */
+.highlight .si { color: #a31515 } /* Literal.String.Interpol */
+.highlight .sx { color: #a31515 } /* Literal.String.Other */
+.highlight .sr { color: #a31515 } /* Literal.String.Regex */
+.highlight .s1 { color: #a31515 } /* Literal.String.Single */
+.highlight .ss { color: #a31515 } /* Literal.String.Symbol */
