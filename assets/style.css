@@ -88,6 +88,23 @@ ul.post-list {
     height: 10px;
 }
 
+.truth-table table {
+  border-collapse: collapse;
+  border: 1px solid;
+}
+
+.truth-table th {
+  border: 1px solid;
+}
+
+.truth-table td {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid;
+}
+
 .card {
   color: black;
   text-decoration: none;
