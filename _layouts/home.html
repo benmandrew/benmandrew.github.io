@@ -30,35 +30,53 @@
         <p>I enjoy making computer science more accessible, whether by writing articles,
           making fun interactive projects, or just rambling to passers-by. You can check out my blog <a href="/articles">here</a>.</p>
 
-        <p>I have an academic interest in mathematical logic, type theory, and software verification.
+        <p>I have an academic interest in mathematical logic and software verification;
           I'm currently learning the <a href="https://coq.inria.fr">Coq proof assistant</a>.</p>
 
-      </div>
-      <div style="padding-top: 10px;">
+    </div>
+    <div style="padding-top: 10px;">
 
-        <h2 id="projects">Relevant Projects</h2>
-        <hr>
-        <ul>
-          <li>
-            <p style="margin-bottom: 1px;"><b>Cavalry</b></p>
-            <p>Imperative mini-language in which programs are axiomatically verified by a Hoare logic-based system
-              that proves validity according to a user-provided program specification. (<a href="https://github.com/benmandrew/cavalry">link</a>)</p>
-          </li>
-          <li>
-            <p style="margin-bottom: 1px;"><b>Delay-Tolerant Link-State Routing</b></p>
-            <p>Undergraduate dissertation project for the University of Cambridge.
-              Implementing and evaluating a modified link-state routing protocol in C for
-              real Unix routers that is tolerant to failures of links and nodes in the network.
-              (<a href="https://www.benmandrew.com/articles/dtlsr-project">link</a>)</p>
-          </li>
-          <li>
-            <p style="margin-bottom: 1px;"><b>Spatially-Accelerated Ray-Tracer</b></p>
-            <p>UK high school equivalent final-year project for computer science, implementing a
-              triangle mesh renderer in C++ using a spatial-acceleration data structure to reduce the
-              running time from linear in the number of triangles to logarithmic.
-              (<a href="https://www.benmandrew.com/articles/lux-project">link</a>)</p>
-          </li>
-        </ul>
+      <h2 id="projects">Latest Posts</h2>
+      <hr>
+      <div class="post-list row">
+        {%- for i in (0..2) -%}
+        <div class="col-4 justify-content-center">
+          <a class="card h-100" href="{{ site.posts[i].url }}">
+            <img src="{{ site.s3_path }}/{{ site.posts[i].header }}"
+              height="150px"
+              style="object-fit: cover; image-rendering: {{ site.posts[i].header_rendering }};">
+            <h5 class="card-body" style="margin-bottom: 1px;">{{ site.posts[i].title | escape }}</h5>
+          </a>
+        </div>
+        {%- endfor -%}
+      </div>
+
+      </div>
+      <div style="padding-top: 30px;">
+
+      <h2 id="projects">Relevant Projects</h2>
+      <hr>
+      <ul>
+        <li>
+          <p style="margin-bottom: 1px;"><b>Cavalry</b></p>
+          <p>Imperative mini-language in which programs are axiomatically verified by a Hoare logic-based system
+            that proves validity according to a user-provided program specification. (<a href="https://github.com/benmandrew/cavalry">link</a>)</p>
+        </li>
+        <li>
+          <p style="margin-bottom: 1px;"><b>Delay-Tolerant Link-State Routing</b></p>
+          <p>Undergraduate dissertation project for the University of Cambridge.
+            Implementing and evaluating a modified link-state routing protocol in C for
+            real Unix routers that is tolerant to failures of links and nodes in the network.
+            (<a href="https://www.benmandrew.com/articles/dtlsr-project">link</a>)</p>
+        </li>
+        <li>
+          <p style="margin-bottom: 1px;"><b>Spatially-Accelerated Ray-Tracer</b></p>
+          <p>UK high school equivalent final-year project for computer science, implementing a
+            triangle mesh renderer in C++ using a spatial-acceleration data structure to reduce the
+            running time from linear in the number of triangles to logarithmic.
+            (<a href="https://www.benmandrew.com/articles/lux-project">link</a>)</p>
+        </li>
+      </ul>
 
       </div>
       <div style="padding-top: 10px;">
