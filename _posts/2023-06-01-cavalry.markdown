@@ -6,7 +6,8 @@ categories: articles
 tag:        "Project"
 header:     headers/cavalry.png
 header_rendering: auto
-banner: true
+separate_banner: true
+banner_header: headers/cavalry-banner.png
 ---
 
 This is a mini programming language of my own design where written programs can be "verified", i.e.  the implementation of the program can be rigorously checked against its logical specification for correctness, without ever running the code!
