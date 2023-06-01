@@ -2,9 +2,6 @@
 layout: default
 ---
 
-
-{%- if site.posts.size > 0 -%}
-
 <div class="post-list row" style="max-width: 80rem; margin: auto;">
   {%- for post in site.posts -%}
   <div class="col-md-6 justify-content-center" style="margin-bottom:15px">
@@ -24,5 +21,3 @@ layout: default
   </div>
   {%- endfor -%}
 </div>
-
-{%- endif -%}

@@ -20,7 +20,7 @@ A talk given to Tarides colleagues and others in the OCaml ecosystem on the 28th
 
 ##### Abstract:
 
-In this talk I will explain how we can run OCaml bytecode on a memory-constrained bare-metal device, using the RIOT operating system as a base layer.
+> In this talk I will explain how we can run OCaml bytecode on a memory-constrained bare-metal device, using the RIOT operating system as a base layer.
 
 ##### Links:
 

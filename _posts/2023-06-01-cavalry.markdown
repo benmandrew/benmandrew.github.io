@@ -1,0 +1,130 @@
+---
+layout:     post
+title:      "Cavalry: Verified Programming Language"
+date:       2023-06-01
+categories: articles
+tag:        "Project"
+header:     headers/cavalry.png
+header_rendering: auto
+banner: true
+---
+
+This is a mini programming language of my own design where written programs can be "verified", i.e.  the implementation of the program can be rigorously checked against its logical specification for correctness, without ever running the code!
+
+## Comparison with testing
+
+Tests run code on a variety of inputs, checking that the outputs match with what is expected. This makes them *dynamic verification*, as we have to execute the code according to its dynamic semantics: if we want to test $$n$$ distinct inputs, we have to run the code $$n$$ times.
+
+In contrast, Cavalry uses *static verification*; the code itself is never run, we instead reason about the program's static semantics as formulated using Hoare logic. This effectively checks every possible execution according to a mathematical model of the program.
+
+## Hoare logic and predicate transformer semantics
+
+We reason about the correctness of programs using [Hoare logic][1], a syntactic formal proof system which allows us to prove that a program satisfies an attached formal specification, written in an assertion logic. Our program and specification are represented by a Hoare triple $$\{P\} \; C \; \{Q\}$$, where $$C$$ is our program, $$P$$ is the precondition that must hold before $$C$$ is executed, and $$Q$$ is the postcondition that must hold after.
+
+In saying that the above triple holds semantically, we mean that starting from any state satisfying $$P$$, executing $$C$$ will, if it terminates, result in a state satisfying $$Q$$.
+
+As an example, here is the rule that lets us talk about the sequencing of two commands $$C$$ and $$C'$$. In order to show that the triple $$\{P\} \; C;C' \; \{R\}$$ holds, we can split $$C$$ and $$C'$$ apart and find some intermediate state $$Q$$ that holds between them, after having executed $$C$$ but before we start executing $$C'$$.
+
+$$\frac{\{P\} \; C \; \{Q\} \quad \{Q\} \; C' \; \{R\}}{\{P\} \; C;C' \; \{R\}}$$
+
+While Hoare logic is a formal proof system, it does not provide an algorithm for verifying that a given triple holds. We instead turn to [predicate transformer semantics][2], a reformulation of Hoare logic that provides an algorithm to reduce the problem of proving the validity of a Hoare logic triple to that of proving a corresponding first-order logic formula. The proof of the first-order formula is then performed using the [Alt-Ergo SMT solver][3].
+
+The first-order formula we reduce to is:
+
+$$P \implies wp(C,Q)$$
+
+where $$wp$$ is a function computing the *weakest precondition* of the command $$C$$ and postcondition $$Q$$. This means that $$wp(C,Q)$$ is the weakest assertion such that the triple $$\{wp(C,Q)\} \; C \; \{Q\}$$ holds.
+
+We then claim that if $$P \implies wp(C,Q)$$ holds (proved by Alt-Ergo) then the original $$\{P\} C \{Q\}$$ must hold.
+
+Note, it is also possible to formulate a function $$sp(C,P)$$ that generates the *strongest postcondition* of $$C$$ and $$P$$ such that $$\{P\} \; C \; \{sp(C,P)\}$$ holds. However, it is generally more useful to start from our desired end state and work out what states we could start from to get there, thus the choice of $$wp$$.
+
+## The challenge of loops
+
+Predicate transformer semantics gives us a way to automatically prove the safety of programs with almost all the programming constructs we have, except one: while loops. To prove the safety of a loop we require something called a *loop invariant*, a logical statement that is true when we enter the loop, and is again true at the end of every iteration of the loop, including when we exit. In the rule below $$P$$ is the loop invariant, and $$B$$ is the guard. (Why do you think $$B$$ appears in the pre- and post-conditions where it does?)
+
+$$\frac{\{P \wedge B\} \; C \; \{P\}}{\{P\} \; \texttt{while} \; B \; \texttt{do} \; C \; \texttt{end} \; \{P \wedge \neg B\}}$$
+
+
+Loop invariants serve to specify in logic something of the purpose of a loop beyond its implementation, and is required to prove useful things about code that has loops. It turns out that automatically coming up with loop invariants is extremely difficult if not impossible, so we generally have to come up with them ourselves and insert them into the program to aid the prover. Some examples of loop invariants are seen below in the examples.
+
+## Example programs
+
+##### Computing triangle numbers
+```
+{ x = 0 && i = 0 }
+while i < 10 do
+  { 2 * x = (i * (i - 1)) }
+  x <- x + i;
+  i <- i + 1
+end;
+x
+{ x = 45 }
+```
+
+Here we see a program with a precondition saying that before starting execution both $$x$$ and $$i$$ equal zero, a postcondition saying that after execution $$x$$ must equal 45, and a program that, when executed on a state satisfying the postcondition, should compute the result we desire and finish in a state satisfying the postcondition.
+
+A loop invariant appears in the while loop, providing a logical specification that says at the start of the loop, and after every iteration of the loop body, $$x=\frac{i(i+1)}{2}$$.
+
+
+##### Euclidean division procedure
+```
+procedure euclidean_div () =
+  requires { x >= 0 }
+  ensures { x = q * y + r && 0 <= r && r < y }
+  writes { q, r }
+  q <- 0;
+  r <- x;
+  while r >= y do
+    { x = q * y + r && 0 <= r }
+    r <- r - y;
+    q <- q + 1
+  end
+end
+
+{ true }
+x <- 42;
+y <- 17;
+q <- 0;
+r <- 0;
+euclidean_div()
+{ q = 2 && r = 8 }
+```
+
+Cavalry also supports procedures, which are individually verified using their own precondition ("*requires*") and postcondition ("*ensures*"). Once verified, when proving code that calls the procedure we can use its specification as a 'contract', which tells us what state it requires going into the procedure, and what state it ensures going out. In this way we have composable proofs, and so don't have to re-verify distinct usages of the same procedure.
+
+Procedures can write to mutable global variables, recorded in the "writes" clause. This is the only way they have an effect on the outside world, as procedures do not return values. Procedures formulated like this are what functions in higher-level languages are usually compiled down to in assembly code, where a returned value is written into a return register common among all functions.
+
+You can see more examples of Cavalry programs in the `./test/` directory.
+
+## Limitations
+
+##### With Cavalry
+
+- The assertion language is currently limited to propositional logic, having no support for first-order logic predicates. This makes it difficult or impossible to write many specifications, for example in the test located in `./test/verify_true_fib_proc.cvl` we unroll the loop, as a loop invariant would have to use a Fibonacci predicate.
+
+- A proof of correctness for a Cavalry program is just a proof according to the language's abstract semantics, it has not been proven that the abstract semantics is equivalent to the concrete implementation. Thus actually running the code on the provided interpreter could yield different results.
+
+##### With formal verification itself
+
+- The prover itself is not verified and so claims of (in)correctness of a given program may not be trustworthy. This is an impossible problem to completely solve (who polices the police?), and is usually helped by reducing the prover to a minimal core that we can have confidence about the correctness of. Look up the Coq Kernel to see an example of this.
+
+## Conclusion
+
+Formal verification is a powerful but heavyweight approach to making software safe. By proving properties of a program's static semantics we can be more certain that those properties are held during execution, as compared to testing a few edge cases with various inputs. However, claims that we have "proven" safety can hide the fact that all that we have proven are properties of an abstract mathematical model of the real concrete program; subtle but critical errors can often come from small and overlooked differences between the two.
+
+
+## Links
+##### Code
+- Cavalry GitHub repository ([link](https://github.com/benmandrew/cavalry)).
+
+##### Sources
+- The Hoare Logic and Model Checking course at the University of Cambridge ([link](https://www.cl.cam.ac.uk/teaching/2223/HLog+ModC/)).
+
+- For verification of procedures, chapter 3 of the Proof of Program 2012 course at MPRI ([link](https://www.lri.fr/~marche/MPRI-2-36-1/2012/)). There is also an expanded and updated version of the course for 2023 ([link](https://marche.gitlabpages.inria.fr/lecture-deductive-verif/)).
+
+- For auxiliary variables, an alternative way to refer to past values of variables (and much more), a report from the University of Edinburgh ([link](https://www.lfcs.inf.ed.ac.uk/reports/98/ECS-LFCS-98-399/ECS-LFCS-98-399.pdf)).
+
+[1]: https://en.wikipedia.org/wiki/Hoare_logic
+[2]: https://en.wikipedia.org/wiki/Predicate_transformer_semantics
+[3]: https://alt-ergo.ocamlpro.com

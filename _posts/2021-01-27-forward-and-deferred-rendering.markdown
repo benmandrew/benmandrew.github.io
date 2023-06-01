@@ -10,7 +10,7 @@ banner: false
 fullwidth: true
 ---
 
-A talk given to my fellow Cambridge computer scientists on January 27th 2021, as part of the yearly Churchill College Computer Science Talks series.
+A talk given to my fellow Cambridge computer science students on January 27th 2021, as part of the yearly Churchill College Computer Science Talks series.
 
 The recording unfortunately starts a few seconds after the beginning of the talk, but it doesn't impact it too much.
 

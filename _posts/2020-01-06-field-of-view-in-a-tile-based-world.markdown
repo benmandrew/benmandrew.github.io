@@ -17,7 +17,7 @@ One of my favourite parts of roguelikes is exploring the dungeon, revealing the 
 
 ---
 
-In this article I'll describe a quick and dirty solution to the problem of computing this.It's not an efficient solution but from profiling Ändleite it's such a small part of the time allocation that it doesn't matter. If you're really desperate for an efficient version, <a href="http://journal.stuffwithstuff.com/2015/09/07/what-the-hero-sees/">this article</a> is a good start, and <a href="http://www.roguebasin.com/index.php?title=Field_of_Vision">here is a compilation</a> of approaches to the same problem.
+In this article I'll describe a quick and dirty solution to the problem of computing this.It's not an efficient solution but from profiling it's such a small part of the time allocation that it doesn't matter. If you're really desperate for an efficient version, <a href="http://journal.stuffwithstuff.com/2015/09/07/what-the-hero-sees/">this article</a> is a good start, and <a href="http://www.roguebasin.com/index.php?title=Field_of_Vision">here is a compilation</a> of approaches to the same problem.
 
 #### The Data
 

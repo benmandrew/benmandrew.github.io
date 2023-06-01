@@ -52,6 +52,13 @@ ul.post-list {
   list-style-type: none;
 }
 
+blockquote {
+  background-color: #f8f9fa;
+  border-left: 4px solid #ced4da;
+  font-weight: 300;
+  padding: 1rem;
+}
+
 .img-fluid-header {
     width: 100%;
     height: 250px;

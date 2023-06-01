@@ -17,7 +17,7 @@ Logic gives us the what, but it's also fairly important to work out exactly how 
 
 As an example we can use _logical deduction_ (fancy name, simple idea). We start with two assumptions: **"it is raining"**, and **"if it is raining, then I am wet"**. It's not a huge leap to conclude from these two assumptions that I am in fact wet. This is all well and good, but we want to be able to talk about _all_ possible things, not just the weather. So, instead we can use symbols to write both more concisely, and in a more general way. We'll choose $$A$$ to mean **"it is raining"**, $$B$$ to mean **"I am wet"**, and $$A \rightarrow B$$ to mean **"if it is raining then I am wet"**. $$A \rightarrow B$$ generally means, **"if $$A$$ then $$B$$"**, so you may be able to see the reasoning behind using the arrow.
 
-To go from the assumptions ($$A$$ and $$A \rightarrow B$$) to the conclusion ($$B$$) we need an _inference rule_. This is laid out around a horizontal line: the things we assume are on top and the thing we conclude is on the bottom. The fancy Greek name for this is _modus ponens_, and it is one of the most important concepts in logic.
+To go from the assumptions ($$A$$ and $$A \rightarrow B$$) to the conclusion ($$B$$) we need an _inference rule_. This is laid out around a horizontal line: the things we assume are on top and the thing we conclude is on the bottom. The fancy Latin name for this is _modus ponens_, and it is one of the most important concepts in logic.
 
 $$
 \begin{prooftree}
@@ -164,7 +164,7 @@ To show that $$A \rightarrow A$$ is _always_ true, we can exhaustively check all
 
 We take statements like this that are obviously true and call them _axioms_. These aren't simple assumptions---their truth is backed only by the semantics that we've chosen---but we can use them like assumptions, as leaves at the top of proof trees.
 
-For example, we may want to prove that $$A \rightarrow (A \vee B)$$, which says that if $$A$$ is true then $$A$$ or $$B$$ is true. Without the axioms this would be impossible to prove with our old purely syntactical system, but with the axiom $$A \rightarrow B$$ and the rules for $$\vee$$ we can do:
+For example, we may want to prove that $$A \rightarrow (A \vee B)$$, which says that if $$A$$ is true then $$A$$ or $$B$$ is true. Without the axioms this would be impossible to prove with our old purely syntactical system, but with the axiom $$A \rightarrow A$$ and the rules for $$\vee$$ we can do:
 
 $$
 \begin{prooftree}

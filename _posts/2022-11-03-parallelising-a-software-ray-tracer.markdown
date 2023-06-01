@@ -16,7 +16,7 @@ fullwidth: true
 
 ---
 
-A presentation given to Tarides colleagues on the 3rd November 2022, retrospective of a mini-project I did to learn about OCaml 5 and the domainslib parallel processing library.
+A presentation given to Tarides colleagues on the 3rd November 2022, which was a retrospective of a mini-project I did to learn about OCaml 5 and the domainslib parallel processing library.
 
 <div class="row">
 <div class="col-lg-6">
