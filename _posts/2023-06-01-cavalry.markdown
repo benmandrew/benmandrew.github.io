@@ -32,11 +32,11 @@ While Hoare logic is a formal proof system, it does not provide an algorithm for
 
 The first-order formula we reduce to is:
 
-$$P \implies wp(C,Q)$$
+$$P \rightarrow wp(C,Q)$$
 
 where $$wp$$ is a function computing the *weakest precondition* of the command $$C$$ and postcondition $$Q$$. This means that $$wp(C,Q)$$ is the weakest assertion such that the triple $$\{wp(C,Q)\} \; C \; \{Q\}$$ holds.
 
-We then claim that if $$P \implies wp(C,Q)$$ holds (proved by Alt-Ergo) then the original $$\{P\} C \{Q\}$$ must hold.
+We then claim that if $$P \rightarrow wp(C,Q)$$ holds (proved by Alt-Ergo) then the original $$\{P\} C \{Q\}$$ must hold.
 
 Note, it is also possible to formulate a function $$sp(C,P)$$ that generates the *strongest postcondition* of $$C$$ and $$P$$ such that $$\{P\} \; C \; \{sp(C,P)\}$$ holds. However, it is generally more useful to start from our desired end state and work out what states we could start from to get there, thus the choice of $$wp$$.
 
