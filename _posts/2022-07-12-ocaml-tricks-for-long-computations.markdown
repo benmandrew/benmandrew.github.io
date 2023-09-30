@@ -131,4 +131,3 @@ We see in the `Cons` case that we first write the data to file, and then call th
 ---
 
 \*The streaming system above doesn't quite work: the actual system would require the initial reading of the text file to be streamed into the compression step. However, I thought that demonstrating lazy evaluation with the compression step was a bit more fun than just reading a text file.
-

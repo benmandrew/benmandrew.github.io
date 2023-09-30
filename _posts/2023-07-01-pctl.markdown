@@ -93,6 +93,6 @@ As above, we compute $$P(t,s)$$ for all states $$s$$, and we then label $$s$$ wi
 ##### Code
 - PCTL GitHub repository ([link](https://github.com/benmandrew/pctl)).
 
-##### Sources
+##### References
 - Hans Hansson and Bengt Jonsson. A logic for reasoning about time and reliability. *Formal Aspects of Computing*, 6:512–535, (1994) ([PDF](http://ri.diva-portal.org/smash/get/diva2:1041377/FULLTEXT01))
 - Yunjeong Lee. How to make sense of model checking. *Blog post* ([link](https://www.leeyunjeong.com/blog/2020/07/31/model-checking/))

@@ -161,4 +161,3 @@ We can see that Coolsort is reliably between 80 and 95% of the running time of M
 - \*The actual solution is a fundamental change in computer architecture, see the Von Neumann bottleneck if you're interested.
 - \*\*Most CPUs use a 64 byte cacheline, which is maintained all the way down the cache hierarchy: one of the reasons we can program for just the L1 cache.
 - \*\*\*I hope it's obvious but I should probably say that I didn't come up with this idea. The name I *can* take credit for, unfortunately.
-

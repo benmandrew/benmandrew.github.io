@@ -119,7 +119,7 @@ Formal verification is a powerful but heavyweight approach to making software sa
 ##### Code
 - Cavalry GitHub repository ([link](https://github.com/benmandrew/cavalry)).
 
-##### Sources
+##### References
 - The Hoare Logic and Model Checking course at the University of Cambridge ([link](https://www.cl.cam.ac.uk/teaching/2223/HLog+ModC/)).
 
 - For verification of procedures, chapter 3 of the Proof of Program 2012 course at MPRI ([link](https://www.lri.fr/~marche/MPRI-2-36-1/2012/)). There is also an expanded and updated version of the course for 2023 ([link](https://marche.gitlabpages.inria.fr/lecture-deductive-verif/)).

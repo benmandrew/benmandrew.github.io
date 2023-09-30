@@ -28,7 +28,7 @@ The recording unfortunately starts a few seconds after the beginning of the talk
 >
 > In this talk, I will compare the Forward and Deferred rendering pipelines, from both a technical standpoint as well as explaining the history behind them. I will also briefly explore what future developments may look like in the industry.
 
-##### Sources:
+##### References:
 
 - [Early History of Deferred Rendering](https://sites.google.com/site/richgel99/home)
 - [S.T.A.L.K.E.R Deferred Shading](https://developer.nvidia.com/gpugems/gpugems2/part-ii-shading-lighting-and-shadows/chapter-9-deferred-shading-stalker)

@@ -129,4 +129,3 @@ Once this is done, the system is finished!
 ---
 
 <a href="https://github.com/benmandrew/Andleite">Here</a> is a link to the Github project if you want to take a look. The files to look for are 'raycaster', 'map', and 'region' (both the '.h' and '.cpp' variants).
-

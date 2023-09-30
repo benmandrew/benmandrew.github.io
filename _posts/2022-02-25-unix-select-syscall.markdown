@@ -109,5 +109,3 @@ This approach is not lightweight, nor is it easy to use. This is not the ideal o
 - [Demonstration Github repo](https://github.com/benmandrew/select-demo)
 - [`select` man page](https://man7.org/linux/man-pages/man2/select.2.html)
 - [DTLSR Github repo](https://github.com/benmandrew/DTLSR)
-
-

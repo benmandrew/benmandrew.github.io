@@ -25,4 +25,3 @@ We also had a couple of streamers play our game which was awesome! There are a c
 - <a href="https://github.com/benmandrew/GoblinHeist">Github repo</a>
 - <a href="https://www.youtube.com/watch?v=aC3sZsRjx5g&t=665s">Tobugis VOD</a>
 - <a href="https://www.twitch.tv/videos/1007626304?t=00h48m29s">ColeSlawski VOD</a>
-
