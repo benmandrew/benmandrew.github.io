@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Terminal Renderer"
+title:      "Rendering in the Terminal"
 date:       2024-04-09
 categories: articles
 tag:        "Article"
