@@ -1,10 +1,12 @@
 #!/bin/sh
 
-jq_program='[.[]
-  | {file: .history[0], messages: [.messages[] | {message: .message | ltrimstr("`") | rtrimstr("; did you mean ?") | rtrimstr("` is misspelt"), line, column}]}
-  | select(.messages | length > 0)]'
+JQ_PROGRAM='[.[]
+| {file: .history[0], messages:
+  [.messages[] | {message: .message | ltrimstr("`") |
+  rtrimstr("; did you mean ?") | rtrimstr("` is misspelt"), line, column}]}
+| select(.messages | length > 0)]'
 
-python_program='import json
+PYTHON_PROGRAM='import json
 with open("filtered.json", "r") as f:
   data = json.load(f)
   for file in data:
@@ -14,10 +16,8 @@ with open("filtered.json", "r") as f:
       print("  {:7} - {}".format(loc, m["message"]))
     print()'
 
-spellchecker -q --no-suggestions --language en-GB _posts/* --reports all.json --dictionaries bin/spellcheck.dictionary 1>/dev/null
+jq "$JQ_PROGRAM" all.json > filtered.json
 
-jq $jq_program all.json > filtered.json
-
-python3 -c $python_program > spellcheck.actual
+python3 -c "$PYTHON_PROGRAM" > spellcheck.actual
 
 diff bin/spellcheck.expected spellcheck.actual

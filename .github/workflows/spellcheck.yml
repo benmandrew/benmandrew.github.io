@@ -4,7 +4,7 @@ name: Spellcheck
 
 jobs:
   check:
-    name: Build
+    name: Spellcheck
     runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
@@ -17,6 +17,9 @@ jobs:
 
       - name: Install spellchecker
         uses: tbroadley/spellchecker-cli-action@v1
+
+      - name: A
+        run: spellchecker -q --no-suggestions --language en-GB _posts/* --reports all.json --dictionaries bin/spellcheck.dictionary
 
       - name: Run spellchecker against expected
         run: ./bin/spellcheck
