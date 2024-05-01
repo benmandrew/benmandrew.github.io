@@ -30,7 +30,7 @@ The probability of taking a particular path through the automaton, i.e. a partic
 
 While this structure allows us to model real-world systems with quantified uncertainty, we would then like to be able to answer complex probabilistic questions about these systems. For example, when considering a communication protocol, we may want to verify that “There is at least a 95% probability that within 5 time-steps of sending a message, we receive an acknowledgement”. To formally express statements like these, we use a logic called Probabilistic Computation Tree Logic (PCTL). This logic has a branching model of time where in a given state there may be multiple outgoing paths into future states, creating a tree structure that expands outwards as time progresses.
 
-PCTL has the standard logical operators like negation, conjuction, implication, etc., but the fundamental temporal building block of PCTL is the 'until' operator:
+PCTL has the standard logical operators like negation, conjunction, implication, etc., but the fundamental temporal building block of PCTL is the 'until' operator:
 
 $$
 f_1 \; U_{\leq t}^{\geq p} \; f_2

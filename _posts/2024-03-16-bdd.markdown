@@ -33,7 +33,7 @@ Let us now move on to the first example.
 
 # $$\neg R \Rightarrow (Q \wedge P)$$
 
-We start by computing the BDD for $$\neg R \Rightarrow (Q \wedge P)$$. On the left of the image below we see the BDD for $$\neg R$$, and on the right the BDD for $$Q \wedge P$$. The implication symbol inbetween them is drawn as a reminder of the connective that we're applying.
+We start by computing the BDD for $$\neg R \Rightarrow (Q \wedge P)$$. On the left of the image below we see the BDD for $$\neg R$$, and on the right the BDD for $$Q \wedge P$$. The implication symbol in between them is drawn as a reminder of the connective that we're applying.
 
 <figure align="center">
   <img src="{{ site.s3_path }}/bdd/out_1.png" width="auto" height="250px">

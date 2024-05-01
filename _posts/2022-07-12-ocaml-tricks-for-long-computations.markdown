@@ -19,7 +19,7 @@ I recently wrote an LZW compressor that compresses ASCII text files. During deve
 
 # Tail Recursion
 
-Consider the psuedo-code below for compressing a string of characters one codeword at a time:
+Consider the pseudo-code below for compressing a string of characters one codeword at a time:
 
 {% highlight ocaml linenos %}{% raw %}
 let rec compress_aux input dict pos =

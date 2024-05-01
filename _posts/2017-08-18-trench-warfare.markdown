@@ -34,9 +34,9 @@ Unity-based strategy game inspired by the [flash game "Warfare 1917"](https://en
 ##### Units:
 
 - Rifleman are the most numerous troop type, armed with rifles. Cheap and ubiquitous.
-- Grenadiers excel at assaulting enemy trenches. Their short range carbines make them ill-suited for defense.
+- Grenadiers excel at assaulting enemy trenches. Their short range carbines make them ill-suited for defence.
 - Machine gunners are a powerful glass cannon, they work best defending a trench.
-- Snipers sport long range rifles, and are best for picking apart an otherwise inpenetretable defense.
+- Snipers sport long range rifles, and are best for picking apart an otherwise impenetrable defence.
 - Armoured soldiers are slow, but their strong armour lets them take lots of damage before dying.
 
 ##### [Link to GitHub repository](https://github.com/benmandrew/TrenchWarfare)

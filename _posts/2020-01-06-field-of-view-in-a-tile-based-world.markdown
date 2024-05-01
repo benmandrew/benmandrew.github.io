@@ -37,7 +37,7 @@ At a minimum, each tile has one of three states, VISIBLE, SEEN, and HIDDEN.
 
 #### Computing Visibility
 
-We repeatedly use Bresenham's Line Algorithm to march a ray along the grid from the player to some far away point, continuing until we hit a wall. All the non-wall tiles passed over on the way are marked as visible. The wall you collide with should also be marked as visible or it won't be rendered. We pick a sample of points evenly distributed in a circle around the player, and raymarch from the player's position to each of these points in turn. The number of points you distribute on the circle is a tradeoff between wasting cycles checking tiles you've already tested, and missing tiles that should be visible. The distance of the points from the player is a simple matter of picking a number that seems large enough that it'll never be encountered.
+We repeatedly use Bresenham's Line Algorithm to march a ray along the grid from the player to some far away point, continuing until we hit a wall. All the non-wall tiles passed over on the way are marked as visible. The wall you collide with should also be marked as visible or it won't be rendered. We pick a sample of points evenly distributed in a circle around the player, and ray-march from the player's position to each of these points in turn. The number of points you distribute on the circle is a trade-off between wasting cycles checking tiles you've already tested, and missing tiles that should be visible. The distance of the points from the player is a simple matter of picking a number that seems large enough that it'll never be encountered.
 
 {% highlight cpp %}{% raw %}Vec2 raycastOffsets[N_RAYCAST];
 float step = 2 * M_PI / N_RAYCAST;

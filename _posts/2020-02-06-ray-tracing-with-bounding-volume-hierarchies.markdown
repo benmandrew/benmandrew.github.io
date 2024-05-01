@@ -71,7 +71,7 @@ For the BVH to have good performance, we ideally want every BV on a given level 
 
 <div class="row">
 <div class="col-md-6">
-The choice of the bounding volume is a tradeoff between conforming tightly to the shape of the group, and the speed of intersection tests with rays. We can use anything from spheres, which are incredibly cheap to test intersection with but risk unnecessarily huge volumes, and convex hulls, which fit the group perfectly but can be arbitrarily expensive to test intersections against. Personally I found spheres to be the fastest option, but I would recommend testing out axis-aligned bounding boxes if you have the time. <a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-sphere-intersection">Here</a> is a good tutorial on ray-sphere intersection algorithms.
+The choice of the bounding volume is a trade-off between conforming tightly to the shape of the group, and the speed of intersection tests with rays. We can use anything from spheres, which are incredibly cheap to test intersection with but risk unnecessarily huge volumes, and convex hulls, which fit the group perfectly but can be arbitrarily expensive to test intersections against. Personally I found spheres to be the fastest option, but I would recommend testing out axis-aligned bounding boxes if you have the time. <a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-sphere-intersection">Here</a> is a good tutorial on ray-sphere intersection algorithms.
 </div>
 
 <div class="col-md-6">

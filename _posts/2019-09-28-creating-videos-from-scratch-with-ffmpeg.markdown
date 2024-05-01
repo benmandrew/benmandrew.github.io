@@ -13,7 +13,7 @@ Rendering videos yourself sounds challenging, but using FFMPEG makes it incredib
 
 FFMPEG is a command-line tool used to convert multimedia files between formats, for example changing a WMV file to an MP4 file, or merging two audio tracks into one. Here I’ll use it  to stack a sequence of images into a video, like a flipbook.
 
-For the example I’ve implemented the jump flood algorithm for rendering voronoi diagrams, but FFMPEG can be used for whatever purpose you need.
+For the example I’ve implemented the jump flood algorithm for rendering Voronoi diagrams, but FFMPEG can be used for whatever purpose you need.
 
 Download FFMPEG from the <a href="https://ffmpeg.org/download.html">download page</a>, and unzip it to a directory that you'll remember.
 

@@ -9,13 +9,13 @@ header_rendering: auto
 banner: true
 ---
 
-Bezier curves are a rather nice looking model of parametric curves, and while they undoubtedly have many practical uses, I mainly just like the look of them (especially when visualising the construction process), so what I’ll be writing is an almost screensaver-like program that randomly generates bezier curves, and draws them over a period of time, until it finishes and moves onto drawing the next random curve.
+Bézier curves are a rather nice looking model of parametric curves, and while they undoubtedly have many practical uses, I mainly just like the look of them (especially when visualising the construction process), so what I’ll be writing is an almost screensaver-like program that randomly generates bézier curves, and draws them over a period of time, until it finishes and moves onto drawing the next random curve.
 
 Note: I will be using Python, with the [Pygame library](https://www.pygame.org/news) for 2D visuals, but all of the code can be generalised to any language and graphics library.
 
-Despite coming from a relatively heavy area of maths, the [wikipedia page](https://en.wikipedia.org/wiki/B%C3%A9zier_curve#Constructing_B%C3%A9zier_curves) for bezier curves gives a surprisingly intuitive idea of how they are constructed, and was actually the inspiration for writing this program.
+Despite coming from a relatively heavy area of maths, the [wikipedia page](https://en.wikipedia.org/wiki/B%C3%A9zier_curve#Constructing_B%C3%A9zier_curves) for bézier curves gives a surprisingly intuitive idea of how they are constructed, and was actually the inspiration for writing this program.
 
-I won’t go into any of the maths here (probably because I don’t actually know any of it), but instead show my solution to the problem. (Before continuing, please do look at the Wikipedia page, since I won’t be going into detail about what bezier curves actually are).
+I won’t go into any of the maths here (probably because I don’t actually know any of it), but instead show my solution to the problem. (Before continuing, please do look at the Wikipedia page, since I won’t be going into detail about what bézier curves actually are).
 
 # The Model
 
@@ -53,16 +53,16 @@ It turns out that even though the ‘parents’ may not be stationary, we can st
 
 <div class="img-caption">
 <img src="{{ site.s3_path }}/bezier/quadratic.gif" class="img-fluid" style="width: 40%">
-  <p>Quadratic bezier curve (2nd order)</p>
+  <p>Quadratic bézier curve (2nd order)</p>
 </div>
 
 ---
 
 When we hit a layer with only 1 point however, we have to stop. While this lone point may seem like a bit of a party pooper, it is actually the one thing we were trying to find in the first place.
 
-As the curve moves through the **[0, 1]** interval, the path of this point is what actually shows us the bezier curve, and so I call it the ‘drawing’ point.
+As the curve moves through the **[0, 1]** interval, the path of this point is what actually shows us the bézier curve, and so I call it the ‘drawing’ point.
 
-At each of our discrete time-steps, the positions of the points are calculated from the top 'construction' layer downwards, as each layer is dependent on the layer above. The position of the drawing point, once calculated for that time-step, is added to a list containing all of the previous positions of the drawing point at their respective time-steps. Once **t = 1**, and all of the child points have fully moved from one parent to the next, all of the points in the list of previous drawing point positions can be connected up, one to the next to form an approximation of the bezier curve.
+At each of our discrete time-steps, the positions of the points are calculated from the top 'construction' layer downwards, as each layer is dependent on the layer above. The position of the drawing point, once calculated for that time-step, is added to a list containing all of the previous positions of the drawing point at their respective time-steps. Once **t = 1**, and all of the child points have fully moved from one parent to the next, all of the points in the list of previous drawing point positions can be connected up, one to the next to form an approximation of the bézier curve.
 
 ---
 
@@ -152,15 +152,15 @@ Drawing the curve can either be done at the very end, after all of the computati
 
 - The other lines that you can see in the gifs are connecting the layers above the drawing point, with the static white lines being the top layer construction layer. They were drawn by traversing each layer and connecting adjacent points with lines. I think it makes it look very cool.
 - [Here](https://github.com/benmandrew/BezierCurve2D) is a github repo of my version of this. Keep in mind that I wrote this a good while ago, and so it’s pretty bad in places (i.e. all of it). Do not take *any* of the practices used in it, please.
-- [Here](https://github.com/benmandrew/BezierCurve3D) is another bezier curve plotter, except using the Unity3D Engine. This I made much more recently, so it might be good to look at.
+- [Here](https://github.com/benmandrew/BezierCurve3D) is another bézier curve plotter, except using the Unity3D Engine. This I made much more recently, so it might be good to look at.
 
 <div class="img-caption">
   <img src="{{ site.s3_path }}/bezier/unity.png" class="img-fluid" style="width: 50%">
-  <p>Unity3D bezier curve, without rendering construction lines<br>
+  <p>Unity3D bézier curve, without rendering construction lines<br>
   <a href="#">Here's an interactive example!</a></p>
 </div>
 
-- If bezier curves interest you, [cubic splines](http://mathworld.wolfram.com/CubicSpline.html) are a very similar alternative, the main difference being that the curve defined by a cubic spline passes through all of it’s control points, whereas in a bezier curve, the control points act as more of a guide, or an attractive force*pulling* the curve towards it. They don’t necessarily have to pass *through* those points. In real world applications, cubic splines tend to be more useful than bezier curves, but require quite a bit more maths.
-- Bezier curves can be created in any dimension you wish, above in the Unity version I made it’s in 3D, but if somebody somehow made a 4D or even higher dimension implementation that would be awesome.
+- If bézier curves interest you, [cubic splines](http://mathworld.wolfram.com/CubicSpline.html) are a very similar alternative, the main difference being that the curve defined by a cubic spline passes through all of it’s control points, whereas in a bézier curve, the control points act as more of a guide, or an attractive force*pulling* the curve towards it. They don’t necessarily have to pass *through* those points. In real world applications, cubic splines tend to be more useful than bézier curves, but require quite a bit more maths.
+- Bézier curves can be created in any dimension you wish, above in the Unity version I made it’s in 3D, but if somebody somehow made a 4D or even higher dimension implementation that would be awesome.
 
 And that is all! I hope some of that was useful, and I would recommend attempting to implement it if you have the time.

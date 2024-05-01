@@ -82,7 +82,7 @@ This 'perspective division' is not done as part of the matrix multiplication, it
 
 <img src="{{ site.s3_path }}/js_renderer/ndc.jpeg" class="img-fluid" style="width: 50%">        
 
-Converting our space to be the right dimensions for the screen is suprisingly easy. We just want to map the x axis from *[-1, 1]* to *[0, screen_width]* and the y axis from *[-1, 1]* to *[0, screen_height]*.
+Converting our space to be the right dimensions for the screen is surprisingly easy. We just want to map the x axis from *[-1, 1]* to *[0, screen_width]* and the y axis from *[-1, 1]* to *[0, screen_height]*.
 
 
 <img src="{{ site.s3_path }}/js_renderer/screen.jpeg" class="img-fluid" style="width: 50%">

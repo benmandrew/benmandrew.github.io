@@ -13,7 +13,7 @@ When programming in a language like C, assembly, or even machine code, we treat 
 
 <img src="{{ site.s3_path }}/coolsort/hierarchy.png" class="img-fluid" style="width: 50%; max-width: 1000px">
 
-A fundamental tradeoff of memory is that bigger memories are generally slower to access. So while gigabytes and gigabytes of RAM are wonderful for storing lots of useful data, actually accessing that data is cripplingly slow, taking hundreds of CPU cycles. This in combination with the fact that practically all programs are constantly manipulating data means that we are being massively bottlenecked by memory access latency.
+A fundamental trade-off of memory is that bigger memories are generally slower to access. So while gigabytes and gigabytes of RAM are wonderful for storing lots of useful data, actually accessing that data is cripplingly slow, taking hundreds of CPU cycles. This in combination with the fact that practically all programs are constantly manipulating data means that we are being massively bottlenecked by memory access latency.
 
 # Caches
 
@@ -27,13 +27,13 @@ Caches exploit two phenomena, locality of **time** and locality of **space**:
 If we can work within the confines of a single cacheline, we will only do L1 cache accesses, increasing the speed of our program dramatically.
 
 Most modern CPUs actually have multiple layers of caches, but we can ignore these and just program for the highest level of cache. It's also interesting to note that
-CPU registers are at the extreme end of the size-latency tradeoff, being tiny but ridiculously fast to access.
+CPU registers are at the extreme end of the size-latency trade-off, being tiny but ridiculously fast to access.
 
 # Merge Sort and Insertion Sort
 
 I won't go into too much detail on the sorting algorithms (their Wikipedia pages are good resources), but we can compare their cache performance and running times.
 
-Merge sort has an optimal running time of O(nlogn), but it can potentially have bad cache performance due to not being an **in-place** algorithm: we repeatedly move data between two large arrays, which can cause cachlines to be repeatedly moved in and out of the cache from memory.
+Merge sort has an optimal running time of O(nlogn), but it can potentially have bad cache performance due to not being an **in-place** algorithm: we repeatedly move data between two large arrays, which can cause cachelines to be repeatedly moved in and out of the cache from memory.
 
 Insertion sort has a terrible running time of O(n<sup>2</sup>), but it sorts in-place, so if we sort an array that resides within a cacheline, we will not have to evict or retrieve any new cachelines and will thus have awesome performance.
 
