@@ -1,0 +1,23 @@
+#!/bin/sh
+
+jq_program='[.[]
+  | {file: .history[0], messages: [.messages[] | {message: .message | ltrimstr("`") | rtrimstr("; did you mean ?") | rtrimstr("` is misspelt"), line, column}]}
+  | select(.messages | length > 0)]'
+
+python_program='import json
+with open("filtered.json", "r") as f:
+  data = json.load(f)
+  for file in data:
+    print(file["file"])
+    for m in file["messages"]:
+      loc = "{}:{}".format(m["line"], m["column"])
+      print("  {:7} - {}".format(loc, m["message"]))
+    print()'
+
+spellchecker -q --no-suggestions --language en-GB _posts/* --reports all.json --dictionaries bin/spellcheck.dictionary 1>/dev/null
+
+jq $jq_program all.json > filtered.json
+
+python3 -c $python_program > spellcheck.actual
+
+diff bin/spellcheck.expected spellcheck.actual

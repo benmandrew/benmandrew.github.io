@@ -21,7 +21,7 @@ Often in our programs we want to be able to respond to external events, with dis
 
 Ideally we want to be able to 'pause' our program until we have something to do, resuming when we're able to do useful work. It's not immediately clear how one would do this purely within the language, but luckily C allows interaction with the operating system via **system calls**. Interacting with the OS allows us to be a good samaritan by giving up control of the CPU when we don't need it, allowing other processes to do stuff. In return the OS will be nice and give us back control when useful work arrives.
 
-It's commonly said that in Unix, everything is a file. We can see with with I/O when we write to `stdout` and read from `stdin`. Both of these are simply file descriptors, represented by integers. We see a similar pattern with sockets, timers, and many other OS services.
+It's commonly said that in Unix, everything is a file. We can see with I/O when we write to `stdout` and read from `stdin`. Both of these are simply file descriptors, represented by integers. We see a similar pattern with sockets, timers, and many other OS services.
 
 The `select` system call gives us the ability to wait on a set of arbitrary file descriptors, giving control back to the OS while no work exists and being given it back when one or more are ready to be used. We then check which of the descriptors is ready in code, and handle the required case. We would then typically loop, handing back control to the OS until the descriptors are ready again.
 
@@ -79,7 +79,7 @@ while (true) {
   }
 ...{% endraw %}{% endhighlight %}
 
-The first thing we do in the loop is make a copy of our `fd_set`, `s`, which has had our socket file descriptor added to it. We make this copy because the `select` call modifies the the `fd_set` passed to it, and we would like to maintain our original version.
+The first thing we do in the loop is make a copy of our `fd_set`, `s`, which has had our socket file descriptor added to it. We make this copy because the `select` call modifies the `fd_set` passed to it, and we would like to maintain our original version.
 
 We then make our `select` call, passing our `fd_set` copy as the read set and using the provided `FD_SETSIZE` as our maximum descriptor number. This call blocks our process, returning when one of our provided file descriptors is ready to be read, and we verify that the number of ready descriptors is actually non-zero using `n_ready`.
 

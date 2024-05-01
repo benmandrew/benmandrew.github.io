@@ -69,7 +69,7 @@ This is because lists (and strings) are not stored on the stack in OCaml, but al
 
 When running *very* long computations, even the heap may not have enough space to hold the data that we are carrying along. When running the compressor on large files, I was running out of RAM and the OS was then killing the process.
 
-The issue was that I was performing three memory-intensive tasks one after the other, with each depending on the full output of the last. The entire `.txt` file was read, then it was all compressed at once, then the entire compressed output was written to a `.bin` file. Doing with with large files of course leads to all of the system memory being eaten up.
+The issue was that I was performing three memory-intensive tasks one after the other, with each depending on the full output of the last. The entire `.txt` file was read, then it was all compressed at once, then the entire compressed output was written to a `.bin` file. Doing with large files of course leads to all of the system memory being eaten up.
 
 <img src="{{ site.s3_path }}/ocaml_tricks/1.png" class="img-fluid" style="max-width: 600px;">
 

@@ -25,7 +25,7 @@ A RenderTexture (RT) is a script representation of a texture on the GPU, that gi
 
 ##### Blitting
 
-Blitting is the act of copying data from one RenderTexture to another, typically manipulating the data in some way with a shader. The shader is run once for each pixel in the destination RT, so if the two RTs are differently sized, the pixels in the input RT will be be interpolated between, potentially using lower levels of the mipmap if the input RT is smaller (and mipmaps are enabled).
+Blitting is the act of copying data from one RenderTexture to another, typically manipulating the data in some way with a shader. The shader is run once for each pixel in the destination RT, so if the two RTs are differently sized, the pixels in the input RT will be interpolated between, potentially using lower levels of the mipmap if the input RT is smaller (and mipmaps are enabled).
 
 
 ### Camera rendering to a RenderTexture
