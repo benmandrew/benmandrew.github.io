@@ -28,4 +28,4 @@ jobs:
         run: spellchecker -q --no-suggestions --language en-GB _posts/* --reports all.json --dictionaries bin/spellcheck.dictionary
 
       - name: Diff against expected
-        run: ./bin/spellcheck
+        run: ./bin/spellcheck-ci
