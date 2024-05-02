@@ -15,11 +15,15 @@ jobs:
         with:
           python-version: 3.12
 
-      - name: Install spellchecker
+      - name: Run spellchecker
         uses: tbroadley/spellchecker-cli-action@v1
+        with:
+          quiet: true
+          noSuggestions: true
+          language: "en-GB"
+          files: "_posts/*"
+          reports: all.json
+          dictionaries: "bin/spellcheck.dictionary"
 
-      - name: A
-        run: spellchecker -q --no-suggestions --language en-GB _posts/* --reports all.json --dictionaries bin/spellcheck.dictionary
-
-      - name: Run spellchecker against expected
+      - name: Diff against expected
         run: ./bin/spellcheck
