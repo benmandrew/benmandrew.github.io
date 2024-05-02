@@ -21,7 +21,7 @@ jobs:
           node-version: 18
       
       - name: Install spellchecker
-        run: npm install spellchecker-cli
+        run: npm install --global spellchecker-cli
 
       - name: Check
         run: spellchecker -q --no-suggestions --language en-GB _posts/* --reports all.json --dictionaries bin/spellcheck.dictionary
