@@ -3,45 +3,9 @@ _posts/2017-08-18-trench-warfare.markdown
 
 _posts/2018-04-21-writing-a-bezier-curve-plotter.markdown
   14:41   - Pygame
-  84:14   - py
-  84:37   - p0
-  86:3    - xDiff
-  86:11   - p1.x
-  86:18   - p0.x
-  87:1    - yDiff
-  87:9    - p1.y
-  89:3    - xOffset
-  89:13   - xDiff
-  90:1    - yOffset
-  90:11   - yDiff
-  91:12   - p0.x
-  91:19   - xOffset
-  91:28   - p0.y
-  91:35   - yOffset
-  91:46   - endraw
-  91:58   - endhighlight
-  101:14  - py
-  101:32  - lerpAllLayers
-  103:7   - layerIndex
-  103:30  - len
-  105:1   - pointIndex
-  105:21  - len
-  106:12  - parent0
-  107:4   - layerIndex
-  108:1   - parent1
-  108:18  - layerIndex
-  109:8   - pointIndex
-  111:1   - parent0
-  111:24  - endraw
-  111:36  - endhighlight
-  123:14  - py
-  125:1   - curvePoints
-  127:1   - lerpAllLayers
-  129:39  - endraw
-  129:51  - endhighlight
-  154:60  - github
-  155:105 - Unity3D
-  164:136 - 4D
+  160:60  - github
+  161:105 - Unity3D
+  170:136 - 4D
 
 _posts/2018-04-30-3d-bezier-curves.markdown
   10:1    - fullwidth
@@ -65,199 +29,38 @@ _posts/2019-09-28-creating-videos-from-scratch-with-ffmpeg.markdown
   14:104  - WMV
   14:119  - MP4
   54:118  - NumPy
-  56:14   - py
-  58:13   - endraw
-  58:25   - endhighlight
   60:158  - PIL
   60:211  - a-ok
   60:230  - NumPy
-  62:14   - py
-  64:1    - outTexture
-  64:51   - stepWidth
-  64:64   - endraw
-  64:76   - endhighlight
-  66:14   - py
-  66:28   - im
-  67:31   - endraw
-  67:43   - endhighlight
-  75:14   - py
-  75:78   - endraw
-  75:90   - endhighlight
-  82:268  - Shlex
-  84:14   - py
-  84:28   - saveCommand
-  84:104  - getOutFileName
-  85:41   - endraw
-  85:53   - endhighlight
+  88:268  - Shlex
 
 _posts/2019-10-01-copper-logic.markdown
   10:1    - fullwidth
 
 _posts/2020-01-06-field-of-view-in-a-tile-based-world.markdown
-  26:14   - cpp
-  26:39   - TILE_NUM
-  26:66   - endraw
-  26:78   - endhighlight
-  31:111  - NPCs
-  34:14   - cpp
-  34:29   - enum
-  34:34   - TileVisibility
-  36:4    - endraw
-  36:16   - endhighlight
-  40:19   - Bresenham's
-  42:14   - cpp
-  42:29   - Vec2
-  42:34   - raycastOffsets
-  43:25   - N_RAYCAST
-  44:21   - N_RAYCAST
-  45:1    - raycastOffsets
-  45:23   - RAYCAST_DIST
-  46:29   - RAYCAST_DIST
-  47:32   - endraw
-  48:11   - endhighlight
-  52:6    - Bresenham's
-  60:14   - cpp
-  60:36   - Vec2
-  60:41   - getDelta0
-  60:51   - const
-  60:57   - Vec2
-  61:1    - Vec2
-  67:8    - Vec2
-  67:13   - getDelta1
-  67:23   - const
-  67:29   - Vec2
-  67:39   - const
-  67:45   - bool
-  67:50   - swapAxes
-  68:1    - Vec2
-  77:6    - RayCaster
-  77:17   - raycast
-  77:25   - const
-  77:31   - Vec2
-  77:43   - const
-  77:49   - Vec2
-  78:1    - Vec2
-  78:6    - pos
-  78:19   - const
-  79:5    - Vec2
-  81:22   - bool
-  81:27   - wallCollision
-  82:21   - bool
-  82:26   - swapAxes
-  83:10   - swapAxes
-  86:8    - const
-  86:14   - Vec2
-  86:19   - delta0
-  87:1    - getDelta0
-  88:13   - const
-  88:19   - Vec2
-  88:24   - delta1
-  88:33   - getDelta1
-  89:10   - swapAxes
-  93:7    - wallCollision
-  94:2    - setTileVisibility
-  94:20   - pos
-  94:25   - TileVisibility
-  94:51   - wallCollision
-  95:9    - isWallCollision
-  98:4    - pos
-  98:11   - delta0
-  98:28   - pos
-  99:6    - delta1
-  100:6   - endraw
-  101:5   - endhighlight
-  109:282 - enum
-  111:14  - cpp
-  111:49  - TILE_NUM_X
-  112:21  - TILE_NUM_Y
-  114:19  - TileVisibility
-  115:10  - TileVisibility
-  116:15  - endraw
-  116:27  - endhighlight
+  33:111  - NPCs
+  44:19   - Bresenham's
+  58:6    - Bresenham's
+  117:282 - enum
 
 _posts/2020-02-06-ray-tracing-with-bounding-volume-hierarchies.markdown
   12:90   - mn
-  101:24  - BVH
-  103:183 - UVs
-  103:216 - BVH
-  105:26  - BVH
-  105:336 - BV
-  107:14  - cpp
-  108:12  - getAxis
-  108:20  - Vec3
-  115:60  - centers
-  117:12  - BVHNode
-  117:21  - calcAxisWithGreatestVariance
-  118:1   - Vec3
-  118:12  - sumOfSqrs
-  120:6   - Welford's
-  120:46  - Vec3
-  120:51  - center
-  121:33  - Vec3
-  121:38  - oldMean
-  122:25  - center
-  123:33  - sumOfSqrs
-  123:45  - sumOfSqrs
-  124:6   - center
-  124:24  - center
-  124:33  - oldMean
-  124:52  - getAxis
-  126:6   - endraw
-  126:18  - endhighlight
-  129:2   - Welford's
-  131:71  - BV
-  133:287 - BVs
-  135:14  - cpp
-  136:6   - BVHNode
-  137:23  - leftPartitionTriangles
-  138:15  - rightPartitionTriangles
-  138:51  - greatestVarianceAxis
-  139:19  - calcAxisWithGreatestVariance
-  141:27  - partitionX
-  142:4   - leftPartitionTriangles
-  143:10  - rightPartitionTriangles
-  143:57  - partitionY
-  144:1   - leftPartitionTriangles
-  145:12  - rightPartitionTriangles
-  146:41  - partitionZ
-  146:52  - leftPartitionTriangles
-  147:9   - rightPartitionTriangles
-  151:3   - child0
-  152:25  - BVHNode
-  152:34  - leftPartitionTriangles
-  152:66  - child1
-  153:20  - BVHNode
-  153:29  - rightPartitionTriangles
-  153:66  - endraw
-  154:3   - endhighlight
-  157:27  - BVH
-  157:349 - BVH
-  159:111 - quicksort
-  159:369 - quicksort
-  159:414 - quicksort's
-  163:14  - cpp
-  165:6   - BVHNode
-  166:1   - isLeaf
-  167:22  - maxTriangleNumPerLeaf
-  170:49  - isLeaf
-  171:20  - endraw
-  172:9   - endhighlight
-  176:26  - BVH
-  178:53  - BV
-  180:14  - cpp
-  180:29  - bool
-  180:34  - BVHNode
-  180:43  - rayIntersection
-  180:59  - const
-  180:90  - triangleIndex
-  181:6   - raySphereIntersection
-  185:59  - rayTrianglesIntersection
-  186:27  - triangleIndex
-  189:40  - recurseRayIntersection
-  190:13  - triangleIndex
-  190:35  - endraw
-  190:47  - endhighlight
-  194:36  - BVH
+  103:24  - BVH
+  105:183 - UVs
+  105:216 - BVH
+  107:26  - BVH
+  107:336 - BV
+  133:2   - Welford's
+  135:71  - BV
+  137:287 - BVs
+  163:27  - BVH
+  163:349 - BVH
+  165:111 - quicksort
+  165:369 - quicksort
+  165:414 - quicksort's
+  184:26  - BVH
+  186:53  - BV
+  204:36  - BVH
 
 _posts/2020-04-21-cryogen.markdown
   10:1    - fullwidth
@@ -272,75 +75,10 @@ _posts/2020-09-28-custom-post-processing-effects-in-unity.markdown
   28:46   - RenderTexture
   28:206  - RTs
   31:27   - RenderTexture
-  35:33   - OnRenderImage
-  35:47   - RenderTexture
-  35:61   - src
-  35:66   - RenderTexture
-  35:80   - dst
-  35:88   - endraw
-  35:100  - endhighlight
-  37:55   - GameObject
-  39:33   - OnRenderImage
-  39:47   - RenderTexture
-  39:61   - src
-  39:66   - RenderTexture
-  39:80   - dst
-  40:20   - dst
-  41:3    - endraw
-  41:15   - endhighlight
-  58:53   - endraw
-  58:65   - endhighlight
-  66:28   - sampler2D
-  66:39   - MainTex
-  68:1    - fixed4
-  68:14   - v2f
-  68:23   - SV_Target
-  69:1    - fixed4
-  69:14   - tex2D
-  69:21   - MainTex
-  70:18   - colors
-  72:11   - endraw
-  73:9    - endhighlight
-  86:202  - MainTex
-  88:14   - cpp
-  88:29   - sampler2D
-  88:40   - MainTex
-  89:1    - sampler2D
-  89:12   - NoiseTex
-  90:8    - NoiseOffset
-  90:23   - endraw
-  90:35   - endhighlight
-  94:14   - cpp
-  94:29   - fixed2
-  94:36   - noiseOffset
-  94:50   - fixed2
-  94:61   - NoiseOffset
-  96:1    - fixed2
-  96:8    - mainOffset
-  96:21   - tex2D
-  96:28   - NoiseTex
-  97:1    - fixed4
-  97:14   - tex2D
-  97:21   - MainTex
-  97:37   - mainOffset
-  98:15   - endraw
-  98:27   - endhighlight
-  103:40  - GameObject
-  103:125 - FixedUpdate
-  105:41  - PostProcessing
-  105:58  - MonoBehaviour
-  107:6   - Texture2D
-  107:16  - noiseTex
-  110:29  - noiseTex
-  113:8   - FixedUpdate
-  118:8   - OnRenderImage
-  118:22  - RenderTexture
-  118:36  - src
-  118:41  - RenderTexture
-  118:55  - dst
-  120:3   - endraw
-  121:11  - endhighlight
-  155:95  - XY
+  39:55   - GameObject
+  115:40  - GameObject
+  115:125 - FixedUpdate
+  169:95  - XY
 
 _posts/2020-10-06-cosmic-taxi.markdown
   10:1    - fullwidth
@@ -375,101 +113,11 @@ _posts/2021-06-30-coolsort-or-cache-access-pattern-optimisation.markdown
   44:187  - cacheline-aligned
   54:29   - mergesort's
   63:77   - nlogn
-  69:35   - CACHELINE_SIZE
-  70:9    - INTS_IN_CACHELINE
-  70:28   - CACHELINE_SIZE
-  70:45   - sizeof
-  72:6    - insertionsort
-  74:36   - INTS_IN_CACHELINE
-  77:6    - INTS_IN_CACHELINE
-  79:21   - tmp
-  80:16   - tmp
-  81:22   - endraw
-  82:11   - endhighlight
-  107:27  - sizeof
-  109:2   - isPrimaryArr
-  110:15  - INTS_IN_CACHELINE
-  117:29  - isPrimaryArr
-  117:45  - isPrimaryArr
-  117:66  - isPrimaryArr
-  120:30  - endraw
-  122:4   - endhighlight
-  129:32  - coolsort
-  130:5   - insertionsort
-  132:1   - endraw
-  132:13  - endhighlight
-  136:132 - O3
-  136:193 - I5-5300U
-  140:5   - logX-Y
-  140:136 - Coolsort
-  148:31  - Coolsort
-  148:59  - Mergesort's
-  152:17  - Coolsort
-  161:82  - Von
-  161:86  - Neumann
-  162:145 - L1
 
 _posts/2021-08-28-porting-ocaml-to-nrf52.markdown
   3:35    - nRF52
   10:1    - fullwidth
   27:12   - OMicroB
-
-_posts/2022-02-25-unix-select-syscall.markdown
-  19:3    - endraw
-  20:9    - endhighlight
-  31:5    - nfds
-  31:11   - fd_set
-  32:16   - readfds
-  32:25   - fd_set
-  33:14   - writefds
-  33:24   - fd_set
-  34:12   - exceptfds
-  34:23   - struct
-  34:30   - timeval
-  35:30   - endraw
-  35:42   - endhighlight
-  47:32   - FD_CLR
-  47:43   - fd
-  47:47   - fd_set
-  48:5    - FD_ISSET
-  48:18   - fd
-  48:22   - fd_set
-  49:17   - fd
-  49:21   - fd_set
-  50:14   - fd_set
-  50:30   - endraw
-  50:42   - endhighlight
-  54:27   - fd_set
-  54:35   - fds
-  56:5    - fd
-  58:1    - FD_ISSET
-  58:10   - fd
-  58:14   - fds
-  59:1    - FD_CLR
-  59:8    - fd
-  59:12   - fds
-  60:1    - FD_ISSET
-  60:10   - fd
-  60:14   - fds
-  60:22   - endraw
-  60:34   - endhighlight
-  68:27   - fd_set
-  70:1    - sockfd
-  70:10   - init_sock
-  71:4    - sockfd
-  72:8    - fd_set
-  75:11   - FD_SETSIZE
-  77:24   - endraw
-  78:7    - endhighlight
-  87:5    - FD_ISSET
-  87:14   - sockfd
-  87:32   - recvfrom
-  88:6    - sockfd
-  88:30   - sizeof
-  88:71   - printf
-  90:1    - endraw
-  91:11   - endhighlight
-  111:4   - DTLSR
 
 _posts/2022-05-16-dtlsr-project.markdown
   12:177  - LSR
@@ -483,40 +131,7 @@ _posts/2022-05-16-dtlsr-project.markdown
 
 _posts/2022-07-12-ocaml-tricks-for-long-computations.markdown
   14:21   - LZW
-  24:20   - linenos
-  25:33   - pos
-  26:4    - pos
-  28:11   - match_len
-  28:59   - pos
-  29:31   - pos
-  29:37   - match_len
-  33:28   - endraw
-  34:12   - endhighlight
-  46:20   - linenos
-  47:33   - pos
-  48:4    - pos
-  50:4    - match_len
-  50:48   - pos
-  51:18   - pos
-  51:24   - match_len
-  55:31   - endraw
-  56:12   - endhighlight
   58:128  - cons-ing
-  84:4    - endraw
-  84:16   - endhighlight
-  90:20   - linenos
-  91:33   - pos
-  92:4    - pos
-  97:13   - pos
-  97:36   - match_len
-  99:33   - pos
-  99:65   - pos
-  99:71   - match_len
-  104:33  - endraw
-  105:12  - endhighlight
-  111:20  - linenos
-  117:21  - endraw
-  117:33  - endhighlight
   127:7   - LZW
 
 _posts/2022-11-03-parallelising-a-software-ray-tracer.markdown

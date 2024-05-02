@@ -49,7 +49,7 @@ We then run insertion sort on each subarray individually.
 
 <img src="{{ site.s3_path }}/coolsort/sorting2.png" class="img-fluid" style="max-width: 600px;">
 
-Each subarray is now 'locally' sorted, having been done so extremely quickly due to working only within a single cacheline.
+Each subarray is now *locally* sorted, having been done so extremely quickly due to working only within a single cacheline.
 
 A happy coincidence is that mergesort's merging step has only the precondition that both input arrays are sorted. In standard mergesort this is the output of a previous merging step (or two single-item arrays), but it doesn't have to be.
 
@@ -66,7 +66,8 @@ As the two steps are performed in sequence, the overall running time is O(n+nlog
 # The Code
 The insertion sort function, with compile-time constants defining the number of integers in a cacheline.
 
-{% highlight c %}{% raw %}#define CACHELINE_SIZE 64
+```c
+#define CACHELINE_SIZE 64
 #define INTS_IN_CACHELINE (CACHELINE_SIZE / sizeof(int))
 
 int* insertionsort(int* a, size_t n) {
@@ -86,11 +87,12 @@ int* insertionsort(int* a, size_t n) {
     }
   }
   return a;
-}{% endraw %}{% endhighlight %}
+}
+```
 
 The merge sort functions.
 
-{% highlight c %}{% raw %}void merge(int* a, size_t left, size_t right, size_t end, int* b) {
+```cvoid merge(int* a, size_t left, size_t right, size_t end, int* b) {
   size_t i = left, j = right;
   for (size_t k = left; k < end; k++) {
     if (i < right && (j >= end || a[i] <= a[j])) {
@@ -122,14 +124,14 @@ int* mergesort(int* a, size_t n) {
   if (!isPrimaryArr) copy(b, a, n);
   free(b);
   return a;
-}{% endraw %}{% endhighlight %}
+}
 
 And the very simple composition of the two.
 
-{% highlight c %}{% raw %}int* coolsort(int* a, size_t n) {
+```cint* coolsort(int* a, size_t n) {
   a = insertionsort(a, n);
   return mergesort(a, n);
-}{% endraw %}{% endhighlight %}
+}
 
 # Testing Results
 

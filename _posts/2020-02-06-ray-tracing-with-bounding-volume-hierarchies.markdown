@@ -15,13 +15,15 @@ When naively raytracing (with triangle primitives), for n rays and m triangles t
 
 <div class="row align-items-center">
 <div class="col-md-6">
-{% highlight cpp %}{% raw %}for (Ray ray : rays) {
+```cpp
+for (Ray ray : rays) {
   for (Triangle triangle : triangles) {
     if (ray.intersectsWith(triangle)) {
       drawPixel();
     }
   }
-}{% endraw %}{% endhighlight %}
+}
+```
 </div>
 
 <div class="col-md-6">
@@ -45,7 +47,7 @@ This cost can be reduced with a spatial partitioning data structure, which group
 
 <div class="row">
 <div class="col-md-6">
-If the BV is intersected with, then we need to check intersections with all the primitives in the group, as intersection with the BV only says that there 'may' be an intersection with a primitive in the group. It is very common for rays intersecting with the BV to completely miss all the primitives in the group.
+If the BV is intersected with, then we need to check intersections with all the primitives in the group, as intersection with the BV only says that there <i>may</i> be an intersection with a primitive in the group. It is very common for rays intersecting with the BV to completely miss all the primitives in the group.
 
 We can do this process multiple times, further partitioning groups of primitives into smaller and smaller groups, and creating a tree of bounding volumes. This is called a bounding volume hierarchy (BVH).
 </div>
@@ -100,11 +102,12 @@ A non-ideal case of a sphere hierarchy, and a *really* non-ideal case.
 
 ##### Constructing the BVH
 
-I'll be starting with a 3D model imported from a '.obj' file, a triangle mesh represented as an array of triangles. In my implementation I only use vertex information, no normals or UVs, as they're unrelated to the BVH, and implementing them is it's own task.
+I'll be starting with a 3D model imported from a `.obj` file, a triangle mesh represented as an array of triangles. In my implementation I only use vertex information, no normals or UVs, as they're unrelated to the BVH, and implementing them is it's own task.
 
 As we're making a binary BVH, at every level we split the group of triangles into two groups. This splitting should be done so that each group is as spatially distinct as possible from the other. My quick and dirty solution is to calculate the variance in position of all the triangles in each dimension, relative to the centre of the BV of the group. In the process I also calculate the means position of the triangles. Then I find the dimension with the greatest variance as split along that axis, using the previously found mean position to get the mean along the splitting axis, defining the axis aligned plane that splits the triangles into two groups.
 
-{% highlight cpp %}{% raw %}// Get the axis with the greatest variance
+```cpp
+// Get the axis with the greatest variance
 Axes::Axes getAxis(Vec3 variance) {
   // Variance is stored in a 3-vector ordered by axis
   if (variance.x > variance.y && variance.x > variance.z) return Axes::x;
@@ -124,7 +127,8 @@ Axes::Axes BVHNode::calcAxisWithGreatestVariance() {
     sumOfSqrs = sumOfSqrs + (center - mean) * (center - oldMean);
   }
   return getAxis(sumOfSqrs);
-}{% endraw %}{% endhighlight %}
+}
+```
 
 [Welford's method for computing variance](https://jonisalonen.com/2013/deriving-welfords-method-for-computing-variance/).
 
@@ -132,7 +136,8 @@ This approach is far from ideal, and has many cases with pretty awful BV choices
 
 Once we have our two subgroups, we calculate the mean position of each subgroup, and find the minimum radius of each sphere that completely covers each subgroup, by iterating over each vertex in the subgroup and calculating the distance to the mean position. Once done, we have two new BVs for our subgroups, and we can recurse downwards again!
 
-{% highlight cpp %}{% raw %}// Partition the triangles into two groups
+```cpp
+// Partition the triangles into two groups
 void BVHNode::partition(Model* model) {
   std::vector&lt;Triangle&gt; leftPartitionTriangles;
   std::vector&lt;Triangle&gt; rightPartitionTriangles;
@@ -152,7 +157,8 @@ void BVHNode::partition(Model* model) {
   // Initialise the children of the node using the two separated groups
   child0 = std::make_unique&lt;BVHNode&gt;(leftPartitionTriangles, model);
   child1 = std::make_unique&lt;BVHNode&gt;(rightPartitionTriangles, model);
-}{% endraw %}{% endhighlight %}
+}
+```
 
 A major choice during the BVH construction is when to stop recursing down. We might naively keep going until we get a subgroup with a single element that can't be split any further, but this only adds a rather unnecessary check when we should just be intersection testing against the triangle. With such small groups of triangles the benefits of a BVH can be quickly outweighed by it's overhead.
 
@@ -160,7 +166,8 @@ This is a similar way of thinking to the way that the most efficient sorting alg
 
 The approach I used was to just pick a minimum number of triangles that each group could have, and if a subgroup had that or below (due to splitting a group of size just above the minimum) then it wouldn't recursively split and would instead store the triangles in it's group.
 
-{% highlight cpp %}{% raw %}// If the number of triangles is above the maximum, partition,
+```cpp
+// If the number of triangles is above the maximum, partition,
 // else identify itself as a leaf node in the tree
 void BVHNode::build(Model* model) {
   isLeaf = true;
@@ -171,13 +178,15 @@ void BVHNode::build(Model* model) {
     triangles.clear();
     isLeaf = false;
   }
-}{% endraw %}{% endhighlight %}
+}
+```
 
 ##### Rendering with the BVH
 
 As stated before, we test for intersection with the BV, and if that is true then we recursively test for intersection with it's children.
 
-{% highlight cpp %}{% raw %}bool BVHNode::rayIntersection(const Ray& ray, float& t, int& triangleIndex) {
+```cpp
+bool BVHNode::rayIntersection(const Ray& ray, float& t, int& triangleIndex) {
   if (!raySphereIntersection(ray)) {
     return false;
   }
@@ -189,7 +198,8 @@ As stated before, we test for intersection with the BV, and if that is true then
     // Recursively test for intersection with child nodes
     return recurseRayIntersection(ray, t, triangleIndex);
   }
-}{% endraw %}{% endhighlight %}
+}
+```
 
 The in-depth implementation of the BVH, along with a lot of extras, can be found [here](https://mainbucketbenandrew.s3.amazonaws.com/lux/ProjectLux.pdf), along with a code repo [here](https://github.com/benmandrew/ProjectLux).
 

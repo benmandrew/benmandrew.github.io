@@ -32,47 +32,55 @@ Blitting is the act of copying data from one RenderTexture to another, typically
 
 By default, the main camera will render directly to the screen, but we can instead set it to render to an intermediate RT for post-processing, which Unity allows you to do with this function:
 
-{% highlight cs %}{% raw %}void OnRenderImage(RenderTexture src, RenderTexture dst);{% endraw %}{% endhighlight %}
+```cs
+void OnRenderImage(RenderTexture src, RenderTexture dst);
+```
 
-The script with this function must be attached to the GameObject that has the camera on it. 'src' is the direct input from the camera, and 'dst' is the output to the screen The most basic working version of this function looks like:
+The script with this function must be attached to the GameObject that has the camera on it. `src` is the direct input from the camera, and `dst` is the output to the screen The most basic working version of this function looks like:
 
-{% highlight cs %}{% raw %}void OnRenderImage(RenderTexture src, RenderTexture dst) {
+```cs
+void OnRenderImage(RenderTexture src, RenderTexture dst) {
   Graphics.Blit(src, dst);
-}{% endraw %}{% endhighlight %}
+}
+```
 
 <img src="{{ site.s3_path }}/postprocessing/default.jpeg" class="img-fluid">
 
-which directly blits the input to the output with no processing, essentially doing the exact same thing as if we didn't implement 'OnRenderImage' at all. However 'Graphics.Blit' has a third optional parameter where we can specify a shader/material to be used during the blitting process, and this is where we can add custom effects.
+which directly blits the input to the output with no processing, essentially doing the exact same thing as if we didn't implement `OnRenderImage` at all. However `Graphics.Blit` has a third optional parameter where we can specify a shader/material to be used during the blitting process, and this is where we can add custom effects.
 
 
 ### Custom Screen-Space Shaders
 
-We start by creating an 'Image Effect Shader' asset and a 'Material' asset from Unity's project tab.
+We start by creating an 'Image Effect Shader' asset and a `Material` asset from Unity's project tab.
 
 <img src="{{ site.s3_path }}/postprocessing/project.png" class="img-fluid" style="max-width: 400px;">
 
 Shaders must be attached to a material in order to be run during a blitting operation.
 
-On opening the shader in a text editor, there is a lot of stuff to see, but there are only a couple of relevant sections. First, on the top line change 'Hidden' to 'Custom', so that the shader is actually visible in the editor. Why this isn't the default is beyond me.
+On opening the shader in a text editor, there is a lot of stuff to see, but there are only a couple of relevant sections. First, on the top line change `Hidden` to `Custom`, so that the shader is actually visible in the editor. Why this isn't the default is beyond me.
 
-{% highlight cs %}{% raw %}Shader "Custom/Main" {{% endraw %}{% endhighlight %}
+```cs
+Shader "Custom/Main" {
+```
 
 In the editor, we can now assign the shader to the material.
 
 <img src="{{ site.s3_path }}/postprocessing/set_mat.png" class="img-fluid" style="max-width: 400px;">
 
-From here the only relevant section is the 'frag' function and variable definition near the bottom.
+From here the only relevant section is the `frag` function and variable definition near the bottom.
 
-{% highlight cs %}{% raw %}sampler2D _MainTex;
+```cs
+sampler2D _MainTex;
 
 fixed4 frag (v2f i) : SV_Target {
   fixed4 col = tex2D(_MainTex, i.uv);
   // just invert the colors
   col.rgb = 1 - col.rgb;
   return col;
-}{% endraw %}{% endhighlight %}
+}
+```
 
-The variable definition outside of the function defines variables that can be passed into the shader from scripts outside the program, in this case the main texture, but also allowing floats and other arbitrary data. The 'frag' function is the fragment shader, the program run for each pixel in the destination RT. The UV coordinates of the pixel are passed into the function, allowing us to do a texture read on the first line, reading in the colour at that point on the input texture. The next line simply inverts the colour, and then returns it, writing it to the output RT.
+The variable definition outside of the function defines variables that can be passed into the shader from scripts outside the program, in this case the main texture, but also allowing floats and other arbitrary data. The `frag` function is the fragment shader, the program run for each pixel in the destination RT. The UV coordinates of the pixel are passed into the function, allowing us to do a texture read on the first line, reading in the colour at that point on the input texture. The next line simply inverts the colour, and then returns it, writing it to the output RT.
 
 <img src="{{ site.s3_path }}/postprocessing/inverse.jpeg" class="img-fluid">
 
@@ -83,26 +91,31 @@ Using this we can do any arbitrary manipulation of colours, which you can do an 
 
 For this example I will be creating a water ripple effect that will simulate the effect of water dripping over the lens of the camera. This will require us to use a noise texture to displace the UV coordinates, and a time-dependent float offset so that the water droplets appear to move downwards.
 
-The noise texture can be downloaded <a href="https://mainbucketbenandrew.s3.amazonaws.com/images/postprocessing/noise.png">here</a>, or found in the Github project link at the bottom. Underneath the '_MainTex' variable definition, define two new variables.
+The noise texture can be downloaded <a href="https://mainbucketbenandrew.s3.amazonaws.com/images/postprocessing/noise.png">here</a>, or found in the Github project link at the bottom. Underneath the `_MainTex` variable definition, define two new variables.
 
-{% highlight cpp %}{% raw %}sampler2D _MainTex;
+```cs
+sampler2D _MainTex;
 sampler2D _NoiseTex;
-float _NoiseOffset;{% endraw %}{% endhighlight %}
+float _NoiseOffset;
+```
 
 and replace the contents of the fragment function with these lines.
 
-{% highlight cpp %}{% raw %}fixed2 noiseOffset = fixed2(0, _NoiseOffset);
+```cs
+fixed2 noiseOffset = fixed2(0, _NoiseOffset);
 // Scale the magnitude of the effect to taste
 fixed2 mainOffset = tex2D(_NoiseTex, i.uv + noiseOffset).rg * 0.02;
 fixed4 col = tex2D(_MainTex, i.uv + mainOffset);
-return col;{% endraw %}{% endhighlight %}
+return col;
+```
 
-In both 'tex2D' calls you can see the UV coordinate we are using is being offset, first by the time variable and second by the noise texture, and so it reads in the value from a different point on the corresponding texture. The effect of the first offset scrolls the noise texture downwards over time, by moving the sampled point upwards over time. The second offset displaces the point on the input texture by some random amount (according to the noise texture), creating a ripple effect.
+In both `tex2D` calls you can see the UV coordinate we are using is being offset, first by the time variable and second by the noise texture, and so it reads in the value from a different point on the corresponding texture. The effect of the first offset scrolls the noise texture downwards over time, by moving the sampled point upwards over time. The second offset displaces the point on the input texture by some random amount (according to the noise texture), creating a ripple effect.
 
 
 In the script attached to the camera's GameObject, I add member variables for the material and noise texture, and Start and FixedUpdate member functions that pass the data to the shader. The noise texture is passed once as it doesn't change, but the noise texture offset changes with time so must be updated continuously.
 
-{% highlight cs %}{% raw %}public class PostProcessing : MonoBehaviour {
+```cs
+public class PostProcessing : MonoBehaviour {
   public Material mat;
   public Texture2D noiseTex;
 
@@ -118,7 +131,8 @@ In the script attached to the camera's GameObject, I add member variables for th
   void OnRenderImage(RenderTexture src, RenderTexture dst) {
     Graphics.Blit(src, dst, mat);
   }
-}{% endraw %}{% endhighlight %}
+}
+```
 
 These public member variables are set in the editor.
 
@@ -134,7 +148,7 @@ And with that, you can run the program in the editor and see it work! (Sorry abo
 
 ---
 
-<a href="https://github.com/benmandrew/WaterRipple">Here</a> is the link to the project. As an extra challenge, see if you can implement Gaussian blur using multiple 'tex2D' calls on the same texture with different UV coordinates, and adding the results!
+<a href="https://github.com/benmandrew/WaterRipple">Here</a> is the link to the project. As an extra challenge, see if you can implement Gaussian blur using multiple `tex2D` calls on the same texture with different UV coordinates, and adding the results!
 
 <img src="{{ site.s3_path }}/postprocessing/ripple.jpeg" class="img-fluid">
 

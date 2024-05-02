@@ -1,0 +1,4 @@
+#!/bin/sh
+
+rm bin/spellcheck.expected
+cp spellcheck.actual bin/spellcheck.expected

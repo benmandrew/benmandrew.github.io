@@ -53,18 +53,22 @@ A video is just a sequence of images, so we first need to render each frame indi
 
 A digital image is a big grid of square pixels, each with an RGB value. To store the image I’m using a 3 dimensional NumPy array, the first two store each pixel location, and the third is a 3-tuple for the RGB values. This can also be called a ‘texture’. I’m also specifying the use of 8 bit integers, as the RGB values are bounded between 0 and 255 anyway, but it’s optional.
 
-{% highlight py %}{% raw %}self.outTexture = np.array(
-[[[0, 0, 0]] * size] * size,
-np.uint8){% endraw %}{% endhighlight %}
+```python
+self.outTexture = np.array([[[0, 0, 0]] * size] * size, np.uint8)
+```
 
 Rendering the image consists of literally just iterating over the array, and assigning colours to each pixel. Once complete, the texture is converted into a PIL image using ‘fromarray’, which happily enough is a-ok with taking a NumPy array. The image is then saved to the disk as a PNG file.
 
-{% highlight py %}{% raw %}for y in range(self.size):
-for x in range(self.size):
-outTexture[x, y] = self.stepJFA(np.array([x, y]), stepWidth){% endraw %}{% endhighlight %}
+```python
+for y in range(self.size):
+  for x in range(self.size):
+    outTexture[x, y] = self.stepJFA(np.array([x, y]), stepWidth)
+```
 
-{% highlight py %}{% raw %}im = Image.fromarray(self.outTexture)
-im.save(getFilename(index)){% endraw %}{% endhighlight %}
+```python
+im = Image.fromarray(self.outTexture)
+im.save(getFilename(index))
+```
 
 This can be done repeatedly to get a sequence of images. They must be named in order, for example I used the naming scheme “img#.png”, where # is the image’s place in the sequence. One pitfall is that numbers have to be left-padded with zeros up to the largest number of digits present, otherwise the ordering of the images gets screwed up during the video rendering process.
 
@@ -72,7 +76,9 @@ This can be done repeatedly to get a sequence of images. They must be named in o
 
 Once the images are created and present in the working directory, you can run FFMPEG from the command line with the required arguments.
 
-{% highlight py %}{% raw %}ffmpeg -framerate 24 -i "img%03d.png" "out.mp4"{% endraw %}{% endhighlight %}
+```python
+ffmpeg -framerate 24 -i "img%03d.png" "out.mp4"
+```
 
 - `ffmpeg` is the program to be run.
 - `-framerate` specifies the number of frames per second, the speed of the video. If you supply 48 images and set `-framerate` to 24, the video will last for two seconds.
@@ -81,8 +87,10 @@ Once the images are created and present in the working directory, you can run FF
 
 In Python you can call command line EXEs from the program, using the `subprocess` library. The command is written and saved to a string variable, it is split into its constituent parts using the `shlex` library, and passed to `subprocess.check_call` to run it. I use Shlex to split the command instead of a simple `str.split(" ")` because command line commands have lots of annoying edge cases where this can break, so using `shlex` just lets it work.
 
-{% highlight py %}{% raw %}saveCommand  = "ffmpeg -framerate {} -i img%03d.png \"{}\"".format(frameRate, getOutFileName())
-sp.check_call(shlex.split(saveCommand)){% endraw %}{% endhighlight %}
+```python
+saveCommand  = "ffmpeg -framerate {} -i img%03d.png \"{}\"".format(frameRate, getOutFileName())
+sp.check_call(shlex.split(saveCommand))
+```
 
 This will output the newly finished video in the working directory, and you’re done!
 

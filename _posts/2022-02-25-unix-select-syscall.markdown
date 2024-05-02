@@ -12,12 +12,12 @@ banner: false
 Often in our programs we want to be able to respond to external events, with distinct responses for distinct events. We may want to wait for a timer to fire, wait to receive some data from the network, or wait for a keypress. One option is to use a 'busy-loop', checking each of our events in turn - handling them if they've occurred - then going right back to the start and doing it all over again. This is a massive waste of CPU power, as the processor is checking over and over again with tiny intervals in between, hogging CPU time from other processes that may actually be doing something useful.
 
 
-{% highlight c %}{% raw %}while (true) {
+```cwhile (true) {
   if (fileIsReady) {
   ...
   } else if (...) {
   ...
-  }{% endraw %}{% endhighlight %}
+  }
 
 Ideally we want to be able to 'pause' our program until we have something to do, resuming when we're able to do useful work. It's not immediately clear how one would do this purely within the language, but luckily C allows interaction with the operating system via **system calls**. Interacting with the OS allows us to be a good samaritan by giving up control of the CPU when we don't need it, allowing other processes to do stuff. In return the OS will be nice and give us back control when useful work arrives.
 
@@ -27,12 +27,12 @@ The `select` system call gives us the ability to wait on a set of arbitrary file
 
 The [man page](https://man7.org/linux/man-pages/man2/select.2.html) is a little dense, so we'll walk through it step-by-step:
 
-{% highlight c %}{% raw %}int select(
+```cint select(
   int nfds,
   fd_set *restrict readfds,
   fd_set *restrict writefds,
   fd_set *restrict exceptfds,
-  struct timeval *restrict timeout);{% endraw %}{% endhighlight %}
+  struct timeval *restrict timeout);
 
 We first look at the select system call at the top.
 
@@ -44,20 +44,20 @@ We can also pass timeout, to specify how long we should wait for our file descri
 
 The `fd_set` data structure is how we pass our file descriptors to `select`, and is interacted with via the four macros below:
 
-{% highlight c %}{% raw %}void FD_CLR(int fd, fd_set *set);
+```cvoid FD_CLR(int fd, fd_set *set);
 int FD_ISSET(int fd, fd_set *set);
 void FD_SET(int fd, fd_set *set);
-void FD_ZERO(fd_set *set);{% endraw %}{% endhighlight %}
+void FD_ZERO(fd_set *set);
 
 We first initialise our set to by empty with `FD_ZERO`. To add a file descriptor we call `FD_SET` with our desired `fd` and the set we want to add it to. We can similarly remove that `fd` from the set with `FD_CLR`. If we want to know whether a file descriptor is in the set then we’ll want to use `FD_ISSET`.
 
-{% highlight c %}{% raw %}fd_set *fds;
+```cfd_set *fds;
 FD_ZERO(fds);
 int fd = 5;
 FD_SET(fd);
 FD_ISSET(fd, fds);
 FD_CLR(fd, fds);
-FD_ISSET(fd, fds);{% endraw %}{% endhighlight %}
+FD_ISSET(fd, fds);
 
 Our `fd_set` can then be passed into `select` as one of the three set types and waited on.
 
@@ -65,7 +65,7 @@ Our `fd_set` can then be passed into `select` as one of the three set types and 
 
 We explore a typical main loop using `select` to implement an event-driven program responding to messages received on the network.
 
-{% highlight c %}{% raw %}fd_set s;
+```cfd_set s;
 FD_ZERO(&amp;s);
 int sockfd = init_sock();
 FD_SET(sockfd, &amp;s);
@@ -77,18 +77,18 @@ while (true) {
   } else if (n_ready == 0) {
     continue;
   }
-...{% endraw %}{% endhighlight %}
+...
 
 The first thing we do in the loop is make a copy of our `fd_set`, `s`, which has had our socket file descriptor added to it. We make this copy because the `select` call modifies the `fd_set` passed to it, and we would like to maintain our original version.
 
 We then make our `select` call, passing our `fd_set` copy as the read set and using the provided `FD_SETSIZE` as our maximum descriptor number. This call blocks our process, returning when one of our provided file descriptors is ready to be read, and we verify that the number of ready descriptors is actually non-zero using `n_ready`.
 
-{% highlight c %}{% raw %}...
+```c...
 if (FD_ISSET(sockfd, &amp;copy)) {
   recvfrom(sockfd, (void *)buffer, sizeof buffer, MSG_WAITALL, NULL, NULL);
   printf("%s\n", (char *)buffer);
 }
-...{% endraw %}{% endhighlight %}
+...
 
 We then check if our socket file descriptor is set using the `FD_ISSET` macro, and if so we receive the message and print it.
 

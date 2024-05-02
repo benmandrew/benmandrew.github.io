@@ -21,7 +21,7 @@ I recently wrote an LZW compressor that compresses ASCII text files. During deve
 
 Consider the pseudo-code below for compressing a string of characters one codeword at a time:
 
-{% highlight ocaml linenos %}{% raw %}
+```ocaml
 let rec compress_aux input dict pos =
   if pos >= String.length input then []
   else
@@ -31,7 +31,7 @@ let rec compress_aux input dict pos =
 let compress input =
   let dict = Dictionary.create () in
   compress_aux input dict 0
-{% endraw %}{% endhighlight %}
+```
 
 On line 5 we have computed our new `codeword`, and we cons it onto a list containing the rest of the codewords which will be computed by the recursive call to `compress_aux`. This is an intuitive way to traverse the input string, converting to codewords as we go.
 
@@ -43,7 +43,7 @@ If we look at line 5 again, at first glance it may look like the recursive call 
 
 Here is a tail-recursive version of the code:
 
-{% highlight ocaml linenos %}{% raw %}
+```ocaml
 let rec compress_aux input dict pos v_aux =
   if pos >= String.length input then List.rev v_aux
   else
@@ -53,7 +53,7 @@ let rec compress_aux input dict pos v_aux =
 let compress input =
   let dict = Dictionary.Comp.initialise () in
   compress_aux input dict 0 []
-{% endraw %}{% endhighlight %}
+```
 
 The changes (on lines 2 and 5) may seem a little unclear at first, but consider the fact that in effect we have just moved the cons-ing of the new codeword to be *before* the recursive call, now making it a *tail call* like we wanted. The `v_aux` variable is a list containing the work we have done so far, that we want to carry along with us through the chain of recursive calls; we are essentially doing the same computation as before, but backwards! This is shown by the base case of `compress_aux`, where we return the entire codeword list reversed to get it into the correct order.
 
@@ -79,15 +79,15 @@ We fix this by splitting the computation up into sequential chunks, doing a litt
 
 This is relatively simple to do in an imperative language, but how do we do this in a functional language like OCaml? We use a technique called 'lazy evaluation' to produce a 'stream'. Critical to lazy evaluation is the following data-type:
 
-{% highlight ocaml %}{% raw %}
+```ocaml
 type comp_stream = Fin of int list | Cons of int list * (unit -> comp_stream)
-{% endraw %}{% endhighlight %}
+```
 
 The final chunk of data (`Fin`) is represented simply as a list of integers as we'd expect, but the interesting part is the `Cons` pattern.
 
 `Cons` firstly contains the chunk of data that we've computed (`int list`) but secondly contains a function that contains another instance of `comp_stream`! This is very similar to a linked list you may already be familiar with, except here the `comp_stream` value within the function body has not yet been evaluated; when we want to evaluate it we simply call the function with `()`. This allows us to delay the computation of the next chunk of data until we are ready to deal with it!
 
-{% highlight ocaml linenos %}{% raw %}
+```ocaml
 let rec compress_aux input dict pos v_aux chunk_i =
   if pos >= String.length input then
     Fin ( List.rev v_aux )
@@ -102,20 +102,20 @@ let rec compress_aux input dict pos v_aux chunk_i =
 let compress input =
   let dict = Dictionary.initialise () in
   compress_aux input dict 0 [] 0
-{% endraw %}{% endhighlight %}
+```
 
 We see on line 4 a new case for when we have filled a chunk of data: we return a `Cons` with the current progress so far (`List.rev v_aux`) and an anonymous function whose body contains the rest of the computation---a recursive call to `compress_aux`.
 
 And we must now change how the `compress` function is used by the output system, creating `write_stream`:
 
-{% highlight ocaml linenos %}{% raw %}
+```ocaml
 let rec write_stream filename = function
   | Fin codewords ->
       write filename codewords
   | Cons (codewords, thunk) ->
       write filename codewords;
       write_stream filename (thunk ())
-{% endraw %}{% endhighlight %}
+```
 
 We see in the `Cons` case that we first write the data to file, and then call the function `thunk` containing the rest of the compression task, recursing back to `write_stream` to write the outputted codewords. These functions are usually called 'thunks' in general use. Now when we run the program, it can run indefinitely without running out of memory!\*
 

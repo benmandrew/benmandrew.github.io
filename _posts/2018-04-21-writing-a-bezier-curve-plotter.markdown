@@ -81,14 +81,16 @@ First we need a way to linearly interpolate between two points based on a parame
 
 ---
 
-{% highlight py %}{% raw %}def lerp(p0, p1, t):
+```python
+def lerp(p0, p1, t):
   # Get differences in x and y between the two points
   xDiff = p1.x - p0.x
   yDiff = p1.y - p0.y
   # Get the difference scaled by t to find the offset
   xOffset = xDiff * t
   yOffset = yDiff * t
-  return Point(p0.x + xOffset, p0.y + yOffset){% endraw %}{% endhighlight %}
+  return Point(p0.x + xOffset, p0.y + yOffset)
+```
 
 ---
 
@@ -98,7 +100,8 @@ After this, it's a simple matter of creating a list of top layer 'construction' 
 
 ---
 
-{% highlight py %}{% raw %}def lerpAllLayers(layers, t):
+```python
+def lerpAllLayers(layers, t):
   # Iterate over layers (excluding construction layer)
   for layerIndex in range(1, len(layers) - 1):
     # Iterate over points in layer
@@ -108,7 +111,8 @@ After this, it's a simple matter of creating a list of top layer 'construction' 
       # Get second parent
       parent1 = layers[layerIndex - 1][pointIndex + 1]
       # Assign child their new position
-      layers[layerIndex][pointIndex] = lerp(parent0, parent1, t){% endraw %}{% endhighlight %}
+      layers[layerIndex][pointIndex] = lerp(parent0, parent1, t)
+```
 
 ---
 
@@ -120,13 +124,15 @@ And finally, here is the main loop. I’ve omitted all of the graphics code beca
 
 ---
 
-{% highlight py %}{% raw %}INTERVAL = 0.05
+```python
+INTERVAL = 0.05
 STEPS = int(1 / INTERVAL)
 curvePoints = list()
 for t in range(STEPS):
   lerpAllLayers(layers, t)
   # Index of the drawing point
-  curvePoints.append(layers[-1][0]){% endraw %}{% endhighlight %}
+  curvePoints.append(layers[-1][0])
+```
 
 ---
 

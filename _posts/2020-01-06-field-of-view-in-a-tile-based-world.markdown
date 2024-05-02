@@ -23,7 +23,9 @@ In this article I'll describe a quick and dirty solution to the problem of compu
 
 I represent the tile-map as a 2D array of tile objects, making traversal very easy.
 
-{% highlight cpp %}{% raw %}Tile grid[TILE_NUM_X][TILE_NUM_Y];{% endraw %}{% endhighlight %}
+```cpp
+Tile grid[TILE_NUM_X][TILE_NUM_Y];
+```
 
 At a minimum, each tile has one of three states, VISIBLE, SEEN, and HIDDEN.
 
@@ -31,21 +33,25 @@ At a minimum, each tile has one of three states, VISIBLE, SEEN, and HIDDEN.
 - Seen tiles have been visible previously, and are rendered normally but slightly darker and muted. Items and NPCs on seen tiles are not rendered.
 - Hidden tiles have not been seen before, and are rendered as solid black.
 
-{% highlight cpp %}{% raw %}enum TileVisibility {
+```cpp
+enum TileVisibility {
   visible, seen, hidden
-};{% endraw %}{% endhighlight %}
+};
+```
 
 #### Computing Visibility
 
 We repeatedly use Bresenham's Line Algorithm to march a ray along the grid from the player to some far away point, continuing until we hit a wall. All the non-wall tiles passed over on the way are marked as visible. The wall you collide with should also be marked as visible or it won't be rendered. We pick a sample of points evenly distributed in a circle around the player, and ray-march from the player's position to each of these points in turn. The number of points you distribute on the circle is a trade-off between wasting cycles checking tiles you've already tested, and missing tiles that should be visible. The distance of the points from the player is a simple matter of picking a number that seems large enough that it'll never be encountered.
 
-{% highlight cpp %}{% raw %}Vec2 raycastOffsets[N_RAYCAST];
+```cpp
+Vec2 raycastOffsets[N_RAYCAST];
 float step = 2 * M_PI / N_RAYCAST;
 for (int i = 0; i < N_RAYCAST; i++) {
   raycastOffsets[i] = {
   RAYCAST_DIST * cos(i * step),
   RAYCAST_DIST * sin(i * step)};
-}{% endraw %}{% endhighlight %}
+}
+```
 
 An alternative to distributing the points on a circle is to run the algorithm for every point within the area, rather than hoping that they'll be caught by lines traced from the centre to the circumference. While this does guarantee correctness, it traces over the same tiles many times repeatedly, making it very wasteful. There is also the issue that the radius of the circle can become very important, as the number of points in the circle grows with the square of the radius, so if you're not careful it can very quickly become a performance bottleneck. With the circumference distribution the number of points on the edge can be independent of the radius, as the correctness degrades only with distance from the centre, thus the radius can be arbitrarily large. This make it much more customisable, and in my opinion the better choice.
 
@@ -57,7 +63,8 @@ However when looking up implementations of the algorithm on the internet, the ve
 
 I found the full algorithm <a href="https://stackoverflow.com/questions/11678693/all-cases-covered-bresenhams-line-algorithm">here</a>. In my code sample I have modified it to be a little more readable, and to quit if a wall is encountered. It also changes the tiles it encounters to visible.
 
-{% highlight cpp %}{% raw %}inline Vec2 getDelta0(const Vec2 dim) {
+```cpp
+inline Vec2 getDelta0(const Vec2 dim) {
   Vec2 delta = {0, 0};
   if (dim.x < 0) delta.x = -1; else if (dim.x > 1) delta.x = 1;
   if (dim.y < 0) delta.y = -1; else if (dim.y > 1) delta.y = 1;
@@ -102,13 +109,15 @@ void RayCaster::raycast(const Vec2 start, const Vec2 end) {
     }
     i++;
   }
-}{% endraw %}{% endhighlight %}
+}
+```
 
 #### Seen Tiles
 
-Currently the implementation works great, a hidden map is slowly revealed to the player as they explore it. However I also want to distinguish between what the player is currently seeing, and what they've seen in the past. This is where the 'seen' property in the 'TileVisibility' enum comes in. I use the simple, brute-force approach of setting every 'visible' tile in the map to 'seen' at the beginning of the frame, before the visibility algorithm shown above is run. While this does mean many tiles are unnecessarily set from 'visible' to 'seen' to 'visible' again, the alternative algorithm would be so complex that it'd negate any benefit in efficiency.
+Currently the implementation works great, a hidden map is slowly revealed to the player as they explore it. However I also want to distinguish between what the player is currently seeing, and what they've seen in the past. This is where the `seen` property in the `TileVisibility` enum comes in. I use the simple, brute-force approach of setting every `visible` tile in the map to `seen` at the beginning of the frame, before the visibility algorithm shown above is run. While this does mean many tiles are unnecessarily set from `visible` to `seen` to `visible` again, the alternative algorithm would be so complex that it'd negate any benefit in efficiency.
 
-{% highlight cpp %}{% raw %}for (int x = 0; x < TILE_NUM_X; x++) {
+```cpp
+for (int x = 0; x < TILE_NUM_X; x++) {
   for (int y = 0; y < TILE_NUM_Y; y++) {
     Tile* tile = &grid[x][y];
     if (tile->visibility == TileVisibility::visible) {
@@ -116,9 +125,10 @@ Currently the implementation works great, a hidden map is slowly revealed to the
       tile->updated = true;
     }
   }
-}{% endraw %}{% endhighlight %}
+}
+```
 
-To visually represent the 'seen' tiles, I just use the same sprites as for if they were 'visible', but filtered to be darker.
+To visually represent the `seen` tiles, I just use the same sprites as for if they were `visible`, but filtered to be darker.
 
 Once this is done, the system is finished!
 
@@ -128,4 +138,4 @@ Once this is done, the system is finished!
 
 ---
 
-<a href="https://github.com/benmandrew/Andleite">Here</a> is a link to the Github project if you want to take a look. The files to look for are 'raycaster', 'map', and 'region' (both the '.h' and '.cpp' variants).
+<a href="https://github.com/benmandrew/Andleite">Here</a> is a link to the Github project if you want to take a look. The files to look for are `raycaster`, `map`, and `region` (both the `.h` and `.cpp` variants).
