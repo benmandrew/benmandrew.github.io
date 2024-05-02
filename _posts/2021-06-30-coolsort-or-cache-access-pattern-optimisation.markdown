@@ -105,7 +105,6 @@ void merge(int* a, size_t left, size_t right, size_t end, int* b) {
     }
   }
 }
-```
 
 int* mergesort(int* a, size_t n) {
   int* b = (int*)malloc(n * sizeof(int));
@@ -127,6 +126,7 @@ int* mergesort(int* a, size_t n) {
   free(b);
   return a;
 }
+```
 
 And the very simple composition of the two.
 

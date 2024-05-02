@@ -113,12 +113,6 @@ _posts/2021-06-30-coolsort-or-cache-access-pattern-optimisation.markdown
   44:187  - cacheline-aligned
   54:29   - mergesort's
   63:77   - nlogn
-  111:27  - sizeof
-  113:2   - isPrimaryArr
-  114:15  - INTS_IN_CACHELINE
-  121:29  - isPrimaryArr
-  121:45  - isPrimaryArr
-  121:66  - isPrimaryArr
   142:132 - O3
   142:193 - I5-5300U
   146:5   - logX-Y

@@ -20,4 +20,4 @@ jq "$JQ_PROGRAM" all.json > filtered.json
 
 python3 -c "$PYTHON_PROGRAM" > spellcheck.actual
 
-diff bin/spellcheck.expected spellcheck.actual
+diff --color bin/spellcheck.expected spellcheck.actual
