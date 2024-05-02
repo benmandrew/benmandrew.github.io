@@ -92,7 +92,8 @@ int* insertionsort(int* a, size_t n) {
 
 The merge sort functions.
 
-```cvoid merge(int* a, size_t left, size_t right, size_t end, int* b) {
+```c
+void merge(int* a, size_t left, size_t right, size_t end, int* b) {
   size_t i = left, j = right;
   for (size_t k = left; k < end; k++) {
     if (i < right && (j >= end || a[i] <= a[j])) {
@@ -104,6 +105,7 @@ The merge sort functions.
     }
   }
 }
+```
 
 int* mergesort(int* a, size_t n) {
   int* b = (int*)malloc(n * sizeof(int));
@@ -128,10 +130,12 @@ int* mergesort(int* a, size_t n) {
 
 And the very simple composition of the two.
 
-```cint* coolsort(int* a, size_t n) {
+```c
+int* coolsort(int* a, size_t n) {
   a = insertionsort(a, n);
   return mergesort(a, n);
 }
+```
 
 # Testing Results
 

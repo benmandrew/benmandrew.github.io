@@ -113,11 +113,30 @@ _posts/2021-06-30-coolsort-or-cache-access-pattern-optimisation.markdown
   44:187  - cacheline-aligned
   54:29   - mergesort's
   63:77   - nlogn
+  111:27  - sizeof
+  113:2   - isPrimaryArr
+  114:15  - INTS_IN_CACHELINE
+  121:29  - isPrimaryArr
+  121:45  - isPrimaryArr
+  121:66  - isPrimaryArr
+  142:132 - O3
+  142:193 - I5-5300U
+  146:5   - logX-Y
+  146:136 - Coolsort
+  154:31  - Coolsort
+  154:59  - Mergesort's
+  158:17  - Coolsort
+  167:82  - Von
+  167:86  - Neumann
+  168:145 - L1
 
 _posts/2021-08-28-porting-ocaml-to-nrf52.markdown
   3:35    - nRF52
   10:1    - fullwidth
   27:12   - OMicroB
+
+_posts/2022-02-25-unix-select-syscall.markdown
+  123:4   - DTLSR
 
 _posts/2022-05-16-dtlsr-project.markdown
   12:177  - LSR
