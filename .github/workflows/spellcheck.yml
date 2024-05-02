@@ -15,15 +15,16 @@ jobs:
         with:
           python-version: 3.12
 
-      - name: Run spellchecker
-        uses: tbroadley/spellchecker-cli-action@v1
+      - name: Set up Node 18
+        uses: actions/setup-node@v4
         with:
-          quiet: true
-          noSuggestions: true
-          language: "en-GB"
-          files: "_posts/*"
-          reports: all.json
-          dictionaries: "bin/spellcheck.dictionary"
+          node-version: 18
+      
+      - name: Install spellchecker
+        run: npm install spellchecker-cli
+
+      - name: Check
+        run: spellchecker -q --no-suggestions --language en-GB _posts/* --reports all.json --dictionaries bin/spellcheck.dictionary
 
       - name: Diff against expected
         run: ./bin/spellcheck
