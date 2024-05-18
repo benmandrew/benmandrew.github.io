@@ -9,9 +9,7 @@ layout: default
   padding: 0 4px;
 }
 
-/* Create two equal columns that sits next to each other */
 .column {
-  flex: 50%;
   padding: 0 4px;
 }
 
@@ -22,76 +20,28 @@ layout: default
 </style>
 
 <h1>Photography Selections</h1>
-<p>All of my photos are on <a href="https://www.flickr.com/photos/benmandrew/">Flickr</a>. Some other miscellaneous art is included.</p>
+<p>All of my photos are on <a href="https://www.flickr.com/photos/benmandrew/">Flickr</a>.</p>
 
-<div class="row">
-  <div class="column">
-    <a href="https://www.flickr.com/photos/benmandrew/49276039357/">
-      <img src="{{ site.s3_path }}/photos/14.jpg" class="img-fluid">
+<div class="post-list row">
+  <div class="column col-md-6">
+    {%- for img_info in page.first_column -%}
+    <a href="https://www.flickr.com/photos/benmandrew/{{ img_info[1] }}/">
+      <img src="{{ site.s3_path }}/photos/{{ img_info[0] }}" class="img-fluid">
     </a>
-    <a href="https://www.flickr.com/photos/benmandrew/52291271740/">
-      <img src="{{ site.s3_path }}/photos/11.jpg" class="img-fluid">
-    </a>
-    <a href="https://www.flickr.com/photos/benmandrew/52905371044/">
-      <img src="{{ site.s3_path }}/photos/21.jpg" class="img-fluid">
-    </a>
-    <a href="https://www.flickr.com/photos/benmandrew/49275870791/">
-      <img src="{{ site.s3_path }}/photos/12.jpg" class="img-fluid">
-    </a>
-    <a href="https://www.flickr.com/photos/benmandrew/52066826341/">
-      <img src="{{ site.s3_path }}/photos/8.jpg" class="img-fluid">
-    </a>
-    <a href="https://www.flickr.com/photos/benmandrew/49811075923/">
-      <img src="{{ site.s3_path }}/photos/6.jpg" class="img-fluid">
-    </a>
-    <a href="https://www.flickr.com/photos/benmandrew/49275738381/">
-      <img src="{{ site.s3_path }}/photos/4.jpg" class="img-fluid">
-    </a>
-    <a href="https://www.flickr.com/photos/benmandrew/49275289333/">
-      <img src="{{ site.s3_path }}/photos/18.jpg" class="img-fluid">
-    </a>
-    <img src="{{ site.s3_path }}/photos/19.jpg" class="img-fluid">
-    <a href="https://www.flickr.com/photos/benmandrew/49275979052/">
-      <img src="{{ site.s3_path }}/photos/2.jpg" class="img-fluid">
-    </a>
+    {% if img_info[2] %}
+    <p>{{ img_info[2] }}</p>
+    {% endif %}
+    {%- endfor -%}
   </div>
 
-  <div class="column">
-    <a href="https://www.flickr.com/photos/benmandrew/52554710507/">
-      <img src="{{ site.s3_path }}/photos/10.jpg" class="img-fluid">
+  <div class="column col-md-6">
+    {%- for img_info in page.second_column -%}
+    <a href="https://www.flickr.com/photos/benmandrew/{{ img_info[1] }}/">
+      <img src="{{ site.s3_path }}/photos/{{ img_info[0] }}" class="img-fluid">
     </a>
-    <a href="https://www.flickr.com/photos/benmandrew/49275932377/">
-      <img src="{{ site.s3_path }}/photos/15.jpg" class="img-fluid">
-    </a>
-    <a href="https://www.flickr.com/photos/benmandrew/52905592925/">
-      <img src="{{ site.s3_path }}/photos/20.jpg" class="img-fluid">
-    </a>
-    <a href="https://www.flickr.com/photos/benmandrew/49275755356/">
-      <img src="{{ site.s3_path }}/photos/13.jpg" class="img-fluid">
-    </a>
-    <a href="https://www.flickr.com/photos/benmandrew/52289808542/">
-      <img src="{{ site.s3_path }}/photos/9.jpg" class="img-fluid">
-    </a>
-    <a href="https://www.flickr.com/photos/benmandrew/49275309193/">
-      <img src="{{ site.s3_path }}/photos/17.png" class="img-fluid">
-    </a>
-    <a href="https://www.flickr.com/photos/benmandrew/51602809921/">
-      <img src="{{ site.s3_path }}/photos/7.jpg" class="img-fluid">
-    </a>
-    <a href="https://www.flickr.com/photos/benmandrew/49275971262/">
-      <img src="{{ site.s3_path }}/photos/3.jpg" class="img-fluid">
-    </a>
-    <a href="https://www.flickr.com/photos/benmandrew/49275732576/">
-      <img src="{{ site.s3_path }}/photos/16.jpg" class="img-fluid">
-    </a>
-    <a href="https://www.flickr.com/photos/benmandrew/52012945337/">
-      <img src="{{ site.s3_path }}/photos/5.jpg" class="img-fluid">
-    </a>
-    <a href="https://www.flickr.com/photos/benmandrew/49275778246/">
-      <img src="{{ site.s3_path }}/photos/1.jpg" class="img-fluid">
-    </a>
+    {% if img_info[2] %}
+    <p>{{ img_info[2] }}</p>
+    {% endif %}
+    {%- endfor -%}
   </div>
 </div>
-
-
-

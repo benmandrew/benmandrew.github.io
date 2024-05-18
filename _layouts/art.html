@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<style>
+a {
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  color: black;
+  text-decoration: underline;
+}
+img.page {
+  object-fit: cover;
+  overflow: hidden;
+  height: 500px;
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  img.page {
+    height: 250px;
+  }
+}
+
+</style>
+
+<div class="post-list row" style="max-width: 80rem; margin: auto;">
+  <div class="col-md-6">
+    <a href="/pages/photos">
+      <h1 class="">Photography</h1>
+      <img
+        src="{{ site.s3_path }}/photos/20.jpg"
+        class="img-fluid page"
+        style="object-fit: cover; overflow: hidden;">
+    </a>
+  </div>
+
+  <div class="col-md-6">
+    <a href="/pages/computer-generated">
+      <h1>Computer-generated</h1>
+      <img
+        src="{{ site.s3_path }}/photos/17.png"
+        class="img-fluid page"
+        style="object-fit: cover; overflow: hidden;">
+    </a>
+  </div>
+</div>

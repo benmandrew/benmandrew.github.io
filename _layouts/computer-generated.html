@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+<style>
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.column {
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 10px;
+  vertical-align: middle;
+}
+</style>
+
+<h1>Computer-generated Artwork</h1>
+<p>A mixture of computer-aided and generative (algorithmic) art.</p>
+
+<div class="post-list row">
+  <div class="column col-md-6">
+    {%- for img_info in page.first_column -%}
+    <img src="{{ site.s3_path }}/computer-generated/{{ img_info[0] }}" class="img-fluid">
+    {% if img_info[1] %}
+    <p>{{ img_info[1] }}</p>
+    {% endif %}
+    {%- endfor -%}
+  </div>
+
+  <div class="column col-md-6">
+    {%- for img_info in page.second_column -%}
+    <img src="{{ site.s3_path }}/computer-generated/{{ img_info[0] }}" class="img-fluid">
+    {% if img_info[1] %}
+    <p>{{ img_info[1] }}</p>
+    {% endif %}
+    {%- endfor -%}
+  </div>
+</div>
