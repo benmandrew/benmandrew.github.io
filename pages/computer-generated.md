@@ -18,5 +18,5 @@ second_column:
 - ["terminal-renderer-long.png"]
 - ["moon.jpg", "<a href=\"https://www.youtube.com/watch?v=fdixQDPA2h0\">Moon</a>"]
 - ["6.png"]
-- ["exam-season.png", "Undergrad exam-season scribble"]
+- ["exam-season.png", "Undergrad exam season scribble"]
 ---
