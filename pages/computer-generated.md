@@ -8,6 +8,7 @@ first_column:
 - ["torus-1.png", "Visualising normal vectors"]
 - ["js_renderer.png", "Rendering in the cells of an HTML table"]
 - ["abcd.png", "The process of writing a fluid simulation"]
+- ["sand.png"]
 
 second_column:
 - ["17.png", "Mandelbulb fractal, cropped"]
