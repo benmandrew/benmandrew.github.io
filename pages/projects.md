@@ -31,6 +31,7 @@ games:
 - ["Cosmic Taxi", "/articles/cosmic-taxi", "Unity/C#", "Entry for the Ludum Dare 47 game jam"]
 - ["Cryogen", "/articles/cryogen", "Unity/C#", "Entry for the Ludum Dare 46 game jam"]
 - ["Revenant", "/articles/revenant", "Unity/C#", "Largely unfinished arena-based wave survival game, inspired by Devil Daggers"]
+- ["Ändleite", "/articles/field-of-view-in-a-tile-based-world", "C++, SDL2", "Tech demo for field-of-view in a tile-based world"]
 ---
 
 # Projects
