@@ -31,6 +31,6 @@ Once you answer a question with "I don't know, but let's work through it togethe
 
 - Only supervise one topic per term. The vast majority of your work time is spent before supervisions, understanding the lecture notes and related reading to the point that you can teach it. Once you have done this work, the marginal cost of doing more supervisions on the same topic is comparatively negligible. It is almost always preferable to do more supervisions in one topic than to diversify. For the same reason, try to repeat the topic the next year instead of switching to another.
 
-- It should go without saying, but you should run through your set questions yourself a couple of times to see how much of a pain in the ass they are to properly answer. If you won't do it, why should your students? This will help you to pre-empt common pitfalls by running into them yourself.
+- It should go without saying, but you should run through your set questions yourself a couple of times to see how much of a pain in the ass they are to properly answer. If you won't do it, why should your students? This will help you to preempt common pitfalls by running into them yourself.
 
 - Be empathetic. A Cambridge degree is a hard process to go through — think about what you would have wanted your supervisors to do when you were in a bad spot, and do that.
