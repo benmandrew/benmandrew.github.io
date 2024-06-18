@@ -1,0 +1,116 @@
+---
+layout: default
+professional:
+- ["Opam Repo CI", "https://github.com/benmandrew/opam-repo-ci", "OCaml, Docker", "CI for testing submissions to the Opam Repository, the central package universe for the OCaml ecosystem"]
+- ["OCaml CI", "https://github.com/benmandrew/ocaml-ci", "OCaml, Docker", "CI for testing OCaml projects on a wide range of operating systems, architectures, and OCaml versions"]
+- ["Multicoretests CI", "https://github.com/benmandrew/multicoretests-ci", "OCaml, Docker", "CI for stress-testing the newly introduced OCaml 5 compiler, which exposed several bugs in the multicore runtime"]
+- ["OCaml on a microcontroller", "/articles/porting-ocaml-to-nrf52", "C, ARM assembly", "OCaml bytecode running on the nRF52840 board, using OMicroB for the runtime and bytecode optimisation, and RIOT OS for the base layer between the runtime and the board"]
+
+theorem_proving:
+- ["Cavalry", "/articles/cavalry", "OCaml", "Mini-language where programs can be verified for correctness using a Hoare logic-style approach"]
+- ["PCTL", "/articles/pctl", "OCaml", "Model checker for verifying safety properties using Probabilistic Computation Tree Logic"]
+- ["Saguaro", "https://github.com/benmandrew/saguaro", "OCaml", "Propositional logic SAT solver using the DPLL method"]
+- ["Typestack", "https://github.com/benmandrew/typestack", "OCaml", "Program semantics and type system for a tiny stack-based language"]
+
+systems:
+- ["DTLSR", "/articles/dtlsr-project", "C, Unix", "Undergraduate thesis project implementing Delay-Tolerant Link-State Routing, tested on the CORE network emulator"]
+- ["Olzw", "/articles/ocaml-tricks-for-long-computations", "OCaml", "Lempel-Ziv-Welch (LZW) streaming compressor and decompressor for ASCII text files"]
+- ["CoolSort", "/articles/coolsort-or-cache-access-pattern-optimisation", "C", "Combining Mergesort and Insertion sort for cache-optimised sorting"]
+
+graphics:
+- ["JSTableRenderer", "/articles/js-table-renderer", "JavaScript", "3D renderer using a HTML table's cells as a pixel grid"]
+- ["Sable", "https://github.com/benmandrew/sable", "Rust", "Multithreaded simulation of falling sand"]
+- ["Otorus", "https://github.com/benmandrew/Otorus", "OCaml", "Torus ray-tracer, rendering to a window or terminal"]
+- ["Lux", "/articles/lux-project", "C++, Python", "Triangle mesh ray-tracer, accelerated with a bounding volume hierarchy (BVH) data structure"]
+- ["Mirror", "/articles/rendering-geometric-patterns", "OCaml", "Experiments with repeating geometric patterns, inspired by \"Islamic Patterns: An Analytical and Cosmological Approach\" by Keith Critchlow"]
+- ["CopperLogic", "/articles/copper-logic", "Unity/C#", "Interactive visualiser for boolean logic circuits"]
+
+games:
+- ["Goblin Heist", "/articles/goblin-heist", "Unity/C#", "Entry for the Ludum Dare 48 game jam"]
+- ["Trench Warfare", "/articles/trench-warfare", "Unity/C#", "Strategy game inspired by the flash game \"Warfare 1917\""]
+- ["Cosmic Taxi", "/articles/cosmic-taxi", "Unity/C#", "Entry for the Ludum Dare 47 game jam"]
+- ["Cryogen", "/articles/cryogen", "Unity/C#", "Entry for the Ludum Dare 46 game jam"]
+- ["Revenant", "/articles/revenant", "Unity/C#", "Largely unfinished arena-based wave survival game, inspired by Devil Daggers"]
+---
+
+# Projects
+
+## Professional
+
+<div class="post-list row" style="margin: auto;">
+  {%- for info in page.professional -%}
+  <div class="col-md-6 justify-content-center" style="margin-bottom:15px">
+    <a class="card h-100" href="{{ info[1] }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ info[0] }}</h5>
+        <p class="card-subtitle text-muted">{{ info[3] }}</p>
+        <p class="text-warning" style="margin-top: 10px; margin-bottom: -10px" align="right">{{ info[2] }}</p>
+      </div>
+    </a>
+  </div>
+  {%- endfor -%}
+</div>
+
+## Theorem proving and Programming languages
+
+<div class="post-list row" style="margin: auto; margin-bottom:10px">
+  {%- for info in page.theorem_proving -%}
+  <div class="col-md-6 justify-content-center" style="margin-bottom:15px">
+    <a class="card h-100" href="{{ info[1] }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ info[0] }}</h5>
+        <p class="card-subtitle text-muted">{{ info[3] }}</p>
+        <p class="text-success" style="margin-top: 10px; margin-bottom: -10px" align="right">{{ info[2] }}</p>
+      </div>
+    </a>
+  </div>
+  {%- endfor -%}
+</div>
+
+## Systems
+
+<div class="post-list row" style="margin: auto; margin-bottom:10px">
+  {%- for info in page.systems -%}
+  <div class="col-md-6 justify-content-center" style="margin-bottom:15px">
+    <a class="card h-100" href="{{ info[1] }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ info[0] }}</h5>
+        <p class="card-subtitle text-muted">{{ info[3] }}</p>
+        <p class="text-primary" style="margin-top: 10px; margin-bottom: -10px" align="right">{{ info[2] }}</p>
+      </div>
+    </a>
+  </div>
+  {%- endfor -%}
+</div>
+
+## Graphics
+
+<div class="post-list row" style="margin: auto; margin-bottom:10px">
+  {%- for info in page.graphics -%}
+  <div class="col-md-6 justify-content-center" style="margin-bottom:15px">
+    <a class="card h-100" href="{{ info[1] }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ info[0] }}</h5>
+        <p class="card-subtitle text-muted">{{ info[3] }}</p>
+        <p class="text-danger" style="margin-top: 10px; margin-bottom: -10px" align="right">{{ info[2] }}</p>
+      </div>
+    </a>
+  </div>
+  {%- endfor -%}
+</div>
+
+## Games
+
+<div class="post-list row" style="margin: auto; margin-bottom:10px">
+  {%- for info in page.games -%}
+  <div class="col-md-6 justify-content-center" style="margin-bottom:15px">
+    <a class="card h-100" href="{{ info[1] }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ info[0] }}</h5>
+        <p class="card-subtitle text-muted">{{ info[3] }}</p>
+        <p class="text-info" style="margin-top: 10px; margin-bottom: -10px" align="right">{{ info[2] }}</p>
+      </div>
+    </a>
+  </div>
+  {%- endfor -%}
+</div>
