@@ -19,10 +19,12 @@ systems:
 
 graphics:
 - ["JSTableRenderer", "/articles/js-table-renderer", "JavaScript", "3D renderer using a HTML table's cells as a pixel grid"]
+- ["WaterRipple", "/articles/custom-post-processing-effects-in-unity", "Unity/C#", "Demonstration of a water ripple post-processing screen-space effect "]
+- ["Mirror", "/articles/rendering-geometric-patterns", "OCaml", "Experiments with repeating geometric patterns, inspired by \"Islamic Patterns: An Analytical and Cosmological Approach\" by Keith Critchlow"]
 - ["Sable", "https://github.com/benmandrew/sable", "Rust", "Multithreaded simulation of falling sand"]
 - ["Otorus", "https://github.com/benmandrew/Otorus", "OCaml", "Torus ray-tracer, rendering to a window or terminal"]
 - ["Lux", "/articles/lux-project", "C++, Python", "Triangle mesh ray-tracer, accelerated with a bounding volume hierarchy (BVH) data structure"]
-- ["Mirror", "/articles/rendering-geometric-patterns", "OCaml", "Experiments with repeating geometric patterns, inspired by \"Islamic Patterns: An Analytical and Cosmological Approach\" by Keith Critchlow"]
+- ["Fractal3D", "https://github.com/benmandrew/Fractal3D", "C, GLSL", "Renders 3D fractals in a fragment shader on the GPU, using signed distance functions"]
 - ["CopperLogic", "/articles/copper-logic", "Unity/C#", "Interactive visualiser for boolean logic circuits"]
 
 games:
