@@ -4,13 +4,22 @@ title:      "Discrete Distortion"
 date:       2024-08-11
 categories: articles
 tag:        "Article"
-header:     headers/kane-dct-8-bug.jpg
+header:     headers/distortion.jpg
 header_rendering: auto
-banner: true
+separate_banner: true
+banner_header: distortion/distortion-banner.jpg
 fullwidth: true
 ---
 
-I've spent the past six weeks teaching English in Colombia, as a sort of holiday in the middle of a big life shift. To stop myself going crazy with little to do in the modest city of Ibagué, I managed to get a very cheap, very crap laptop to get programming on[^1].
+<style>
+p:not(.post-meta), h2 {
+    max-width: 43.25rem;
+    margin: auto;
+    padding-bottom: 10px;
+}
+</style>
+
+I've spent the past six weeks teaching English in Colombia, as a sort of holiday in the middle of a big life shift. To stop myself going crazy with little to do in the modest city of Ibagué, I managed to get a very cheap, very crap laptop to get programming on.
 
 With the next few years of my life looking like they're going to be full of serious maths and proofs, I wanted a project that would combine my love of computers and visual art. I had the idea of generating interesting image effects in an *algorithmic* way.
 
@@ -18,7 +27,7 @@ Many commonly used image effects can be represented using linear or continuous a
 
 In this article I'll demonstrate and explain some cool effects I came up with. You can try them out yourself using the publicly available [GitHub repo](https://github.com/benmandrew/distortion).
 
-# Scaling and modulus
+## Scaling and modulus
 
 When messing around with scaling the brightness values of images, I ran into a strange phenomenon of colour discontinuities in the output images.
 
@@ -30,7 +39,7 @@ As each colour channel is scaled individually, the discontinuities appear per-ch
 
 It should also be possible to convert to other colour models, do the scaling and modulo, and then convert back to get interesting discontinuities dependent on other colour properties. For example you could use the hue, saturation, and value (HSV) colour model.
 
-# Streaking
+## Streaking
 
 I thought an interesting effect might be created if I took the brightest pixels of the image and "streaked" them across, with the length of the streak depending on the luminance of the pixel. A streak of length $$n$$ is made simply by copying the pixel's value in a line of $$n$$ pixels, either up, down, left, or right, overwriting the previous values.
 
@@ -38,7 +47,7 @@ The function computing the length of the streak can be customised. I typically u
 
 We can use the input image itself as the source for which pixels should be streaked and how much, or we could use a separate image for this, to change where streaking occurs. An example of this is detailed below.
 
-# Edge detection
+## Edge detection
 
 Kernels such as the Laplacian or Sobel operators can be used to detect edges in an image, producing larger values where there is higher local contrast, and smaller values where there is little. By themselves they can produce interesting images, but when used in conjunction with the discrete techniques already described, they massively expand what's possible.
 
@@ -46,7 +55,7 @@ By applying edge detection after the scaling and modulus technique described abo
 
 This can then be used as a source for streaking, causing streaks in interesting places in the original image.
 
-# Relative blocks
+## Relative blocks
 
 I had heard of the data compression technique of converting values from absolute to relative values, where for data with high local similarity, using relative values generally results in smaller numbers that can be represented with fewer bits of information. Inspired by this, I split the image into square blocks, taking a single center pixel as the only absolute value and subtracting its value from every pixel in the block, producing relative values.
 
@@ -72,4 +81,4 @@ One thing to be aware of is the existence of *negative values*. If these are cas
 
 </div> -->
 
-[^1]: USD$150 for a 2-core Celeron B815, 8GB of RAM and a 256GB SSD.
+<!-- [^1]: USD$150 for a 2-core Celeron B815, 8GB of RAM and a 256GB SSD. -->
