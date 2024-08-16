@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Discrete Distortion"
-date:       2024-08-11
+date:       2024-08-16
 categories: articles
 tag:        "Article"
 header:     headers/distortion.jpg
@@ -15,7 +15,11 @@ fullwidth: true
 p:not(.post-meta), h2 {
     max-width: 43.25rem;
     margin: auto;
-    padding-bottom: 10px;
+    padding-bottom: 1rem;
+}
+div {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 </style>
 
@@ -31,11 +35,35 @@ In this article I'll demonstrate and explain some cool effects I came up with. Y
 
 When messing around with scaling the brightness values of images, I ran into a strange phenomenon of colour discontinuities in the output images.
 
-Imagine an image format where pixels can have a brightness from 0 to 1. If you multiply the value of every pixel by two, the range is now between 0 and 2. If you now take the modulo 1 for every pixel, those that are in the range of 1 to 2 will be shifted down to be within the acceptable range, shifting 1 to 0 and 2 to 1. This causes a discontinuity, with discontinuities appearing at the line where the brightness was originally 0.5.
+<div class="row">
+<div class="col-6">
+<img src="{{ site.s3_path }}/distortion/fin-mod-1.jpg" width="100%" height="auto">
+<p>Original</p>
+</div>
+<div class="col-6">
+<img src="{{ site.s3_path }}/distortion/fin-mod-2.jpg" width="100%" height="auto">
+<p>With scaled pixel values</p>
+</div>
+</div>
 
-This is exactly what I was seeing in my test images. First an image was read in, the red, green, and blue colour channels being converted from their single byte lengths (`unsigned char`) to `int`. Each channel was then scaled, critically resulting in some values being above the 255 `unsigned char` maximum. When an `int` is casted to `unsigned char`, the extra bits are "chopped off", effectively doing a modulo 256 operation.
+To understand why this happens, imagine an image format where pixels can have a brightness from 0 to 1. If you multiply the value of every pixel by two, the range is now between 0 and 2. If you now take the modulo 1 for every pixel, those that are in the range of 1 to 2 will be shifted down to be within the acceptable range, shifting 1 to 0 and 2 to 1. This causes a discontinuity, with discontinuities appearing at the line where the brightness was originally 0.5.
 
-As each colour channel is scaled individually, the discontinuities appear per-channel, leading to some interesting results.
+<div class="row">
+<div class="col-4">
+<img src="{{ site.s3_path }}/distortion/shoe-mod-3.jpg" width="100%" height="auto">
+<p>Black-and-white</p>
+</div>
+<div class="col-4">
+<img src="{{ site.s3_path }}/distortion/shoe-mod-4.jpg" width="100%" height="auto">
+<p>Black-and-white, scaled</p>
+</div>
+<div class="col-4">
+<img src="{{ site.s3_path }}/distortion/shoe-mod-2.jpg" width="100%" height="auto">
+<p>Original, scaled</p>
+</div>
+</div>
+
+This is exactly what I was seeing in my test images. First an image was read in, the red, green, and blue colour channels being converted from their single byte lengths (`unsigned char`) to `int`. Each channel was then scaled, critically resulting in some values being above the 255 `unsigned char` maximum. When an `int` is casted to `unsigned char`, the extra bits are "chopped off", effectively doing a modulo 256 operation. As each colour channel is scaled individually, the discontinuities appear per-channel, leading to some interesting results.
 
 It should also be possible to convert to other colour models, do the scaling and modulo, and then convert back to get interesting discontinuities dependent on other colour properties. For example you could use the hue, saturation, and value (HSV) colour model.
 
@@ -54,6 +82,44 @@ Kernels such as the Laplacian or Sobel operators can be used to detect edges in 
 By applying edge detection after the scaling and modulus technique described above, we can see strong contour lines appearing along the discontinuities.
 
 This can then be used as a source for streaking, causing streaks in interesting places in the original image.
+
+## Colour models
+
+The standard of using red, green, and blue channels to represent colours is just one option of many. Other more intuitive models exist, such as the Hue, Saturation, and Value (HSV) model. By converting into this colour model we can directly manipulate properties that are more interesting than just the amount of red, green, or blue.
+
+If we add to the H (hue) channel, we can "rotate" the hue around the entire 360° colour wheel. To do this process we first convert from RGB to HSV, add some value to the H channel, then convert back to RGB.
+
+<div class="row">
+<div class="col-6 col-lg-3">
+<img src="{{ site.s3_path }}/distortion/malachy-hue-rot-1.jpg" width="100%" height="auto">
+<p>Original</p>
+</div>
+<div class="col-6 col-lg-3">
+<img src="{{ site.s3_path }}/distortion/malachy-hue-rot-2.jpg" width="100%" height="auto">
+<p>90° clockwise rotation</p>
+</div>
+<div class="col-6 col-lg-3">
+<img src="{{ site.s3_path }}/distortion/malachy-hue-rot-3.jpg" width="100%" height="auto">
+<p>180° clockwise rotation</p>
+</div>
+<div class="col-6 col-lg-3">
+<img src="{{ site.s3_path }}/distortion/malachy-hue-rot-4.jpg" width="100%" height="auto">
+<p>270° clockwise rotation</p>
+</div>
+</div>
+
+Another possibility is that instead of converting back to RGB, we can simply treat the HSV values as if they were RGB.
+
+<div class="row">
+<div class="col-lg-6">
+<img src="{{ site.s3_path }}/distortion/kane-hsv-1.jpg" width="100%" height="auto">
+<p>Original</p>
+</div>
+<div class="col-lg-6">
+<img src="{{ site.s3_path }}/distortion/kane-hsv-2.jpg" width="100%" height="auto">
+<p>HSV</p>
+</div>
+</div>
 
 ## Relative blocks
 
