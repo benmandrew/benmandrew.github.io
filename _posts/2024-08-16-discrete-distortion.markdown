@@ -151,8 +151,6 @@ We could instead apply the scaling and modulus *after* the edge detection, expos
 </div>
 </div>
 
-This can then be used as a source for streaking, causing streaks in interesting places in the original image.
-
 ## Colour models
 
 The standard of using Red, Green, and Blue (RGB) channels to represent colours is just one option of many. Other more intuitive models exist, such as the Hue, Saturation, and Value (HSV) model. By converting into this colour model we can directly manipulate properties that are more interesting than just the amount of red, green, or blue.
