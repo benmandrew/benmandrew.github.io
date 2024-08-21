@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Discrete Distortion"
-date:       2024-08-16
+date:       2024-08-21
 categories: articles
 tag:        "Article"
 header:     headers/distortion.jpg
