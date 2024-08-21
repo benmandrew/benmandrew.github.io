@@ -15,11 +15,15 @@ fullwidth: true
 p:not(.post-meta), h2 {
     max-width: 43.25rem;
     margin: auto;
-    padding-bottom: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 div {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+}
+div.row {
+    justify-content: center;
 }
 img.pixelated {
     image-rendering: pixelated;
@@ -132,10 +136,6 @@ By applying edge detection after the scaling and modulus technique described abo
 <img src="{{ site.s3_path }}/distortion/kane-laplacian-mod.jpg" width="100%" height="auto">
 <p></p>
 </div>
-<div class="col-md-12">
-<img src="{{ site.s3_path }}/distortion/megan-laplacian-mod.jpg" width="100%" height="auto">
-<p></p>
-</div>
 </div>
 
 We could instead apply the scaling and modulus *after* the edge detection, exposing some of the discrete errors caused by JPEG compression.
@@ -155,7 +155,7 @@ This can then be used as a source for streaking, causing streaks in interesting 
 
 ## Colour models
 
-The standard of using red, green, and blue channels to represent colours is just one option of many. Other more intuitive models exist, such as the Hue, Saturation, and Value (HSV) model. By converting into this colour model we can directly manipulate properties that are more interesting than just the amount of red, green, or blue.
+The standard of using Red, Green, and Blue (RGB) channels to represent colours is just one option of many. Other more intuitive models exist, such as the Hue, Saturation, and Value (HSV) model. By converting into this colour model we can directly manipulate properties that are more interesting than just the amount of red, green, or blue.
 
 If we add to the H (hue) channel, we can "rotate" the hue around the entire $$360°$$ colour wheel. To do this process we first convert from RGB to HSV, add some value to the H channel, then convert back to RGB.
 
@@ -214,24 +214,44 @@ I had heard of the data compression technique of converting values from absolute
 
 For very small block sizes, because of local similarity this just leads to lots of uninteresting black. However, with larger blocks there are much more drastic changes of value, and so we see some interesting effects.
 
+<div class="row">
+<div class="col-lg-6">
+<img src="{{ site.s3_path }}/distortion/kane-block-1.jpg" width="100%" height="auto">
+<p>Original</p>
+</div>
+<div class="col-lg-6">
+<img src="{{ site.s3_path }}/distortion/kane-block-2.jpg" width="100%" height="auto">
+<p>Relative blocks</p>
+</div>
+</div>
+
 One thing to be aware of is the existence of *negative values*. If these are casted back to `unsigned char` then we will again see a modulo-like effect, except in this case underflowing to the top of the range. This can produce nice effects, but if you don't want it then you can first compute each pixel's absolute value before writing the image.
 
-<!-- <div class="row">
+## Combinations
 
-<div class="col-lg-6">
-<img src="{{ site.s3_path }}/distortion/kane.jpg" class="img-fluid w-100" style="padding-bottom: 10px">
-</div>
-<div class="col-lg-6">
-<img src="{{ site.s3_path }}/distortion/kane-laplacian.jpg" class="img-fluid w-100" style="padding-bottom: 10px">
-</div>
+The described techniques can be combined together in different ways to produce some cool results. Thanks for reading.
 
+<div class="row">
 <div class="col-lg-6">
-<img src="{{ site.s3_path }}/distortion/kane-block-streak-1.jpg" class="img-fluid w-100" style="padding-bottom: 10px">
+<img src="{{ site.s3_path }}/distortion/kane-block-mod-laplacian-streak.jpg" class="pixelated" width="100%" height="auto">
+<p></p>
 </div>
 <div class="col-lg-6">
-<img src="{{ site.s3_path }}/distortion/kane-dct-8-bug.jpg" class="img-fluid w-100" style="padding-bottom: 10px">
+<img src="{{ site.s3_path }}/distortion/fin-block-mod-laplacian-streak.jpg" class="pixelated" width="100%" height="auto">
+<p></p>
 </div>
-
-</div> -->
+<div class="col-lg-12">
+<img src="{{ site.s3_path }}/distortion/megan-block-mod-laplacian-streak.jpg" class="pixelated" width="100%" height="auto">
+<p></p>
+</div>
+<div class="col-lg-6">
+<img src="{{ site.s3_path }}/distortion/kane-block-streak.jpg" class="pixelated" width="100%" height="auto">
+<p></p>
+</div>
+<div class="col-lg-6">
+<img src="{{ site.s3_path }}/distortion/poster.jpg" class="pixelated" width="100%" height="auto">
+<p></p>
+</div>
+</div>
 
 <!-- [^1]: USD$150 for a 2-core Celeron B815, 8GB of RAM and a 256GB SSD. -->
