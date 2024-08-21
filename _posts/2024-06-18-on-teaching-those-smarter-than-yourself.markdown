@@ -9,7 +9,7 @@ header_rendering: auto
 banner: true
 ---
 
-For the past two years I have been teaching undergraduate computer science at the University of Cambridge as a supervisor[^1]. Over six academic terms I have taught 48 students in groups of two, each group in three intense, hour-long sessions where we discuss their submitted work and understanding of the given topic.
+For the past two years, I have been teaching undergraduate computer science at the University of Cambridge as a supervisor[^1]. Over six academic terms, I have taught 48 students in pairs, each pair participating in three intensive, hour-long sessions where we discuss their submitted work and understanding of the given topic.
 
 Many of the students I taught are much smarter than I am. Practically all of them excel in at least one area where I don't. How then was I supposed to teach them? How was I supposed to answer questions that I didn't have the answer to, even after hours of effort? It required some clever tactics, but mostly it needed a drastic change in the way I perceived teaching.
 
