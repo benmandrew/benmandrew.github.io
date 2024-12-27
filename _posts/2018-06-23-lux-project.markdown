@@ -17,5 +17,5 @@ Please don't judge the project's name too harshly, 17-year-old me thought it was
 
 ##### Links:
 
-- The [coursework itself](https://benmandrew.s3.amazonaws.com/lux/lux.pdf) (PDF).
+- The [coursework itself]({{ site.s3_path }}/lux/lux.pdf) (PDF).
 - The [GitHub repository](https://github.com/benmandrew/ProjectLux); be warned, it is a mess.

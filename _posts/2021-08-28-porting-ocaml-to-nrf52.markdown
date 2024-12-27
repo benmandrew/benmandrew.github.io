@@ -26,5 +26,5 @@ A talk given to Tarides colleagues and others in the OCaml ecosystem on the 28th
 
 - [Github: OMicroB runtime](https://github.com/benmandrew/omicrob-riot-nrf52)
 - [Github: OCaml runtime](https://github.com/benmandrew/ocaml-riot-nrf52)
-- [Slide deck](https://benmandrew.s3.eu-west-2.amazonaws.com/nrf52/porting-ocaml-to-nrf52.pdf)
-- [Technical help-sheet for the project](https://benmandrew.s3.eu-west-2.amazonaws.com/nrf52/ocaml-on-nrf52-instructions.pdf)
+- [Slide deck]({{ site.s3_path }}/nrf52/porting-ocaml-to-nrf52.pdf)
+- [Technical help-sheet for the project]({{ site.s3_path }}/nrf52/ocaml-on-nrf52-instructions.pdf)

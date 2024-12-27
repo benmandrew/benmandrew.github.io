@@ -2,6 +2,7 @@
 layout: computer-generated
 first_column:
 - ["_FRACTAL 1.png", "Mandelbulb fractal"]
+- ["kane-block-streak.jpg"]
 - ["19.jpg"]
 - ["_CUBE.png"]
 - ["_FIELD.png", "Visualising an electric field"]
@@ -11,11 +12,12 @@ first_column:
 - ["sand.png"]
 
 second_column:
-- ["17.png", "Mandelbulb fractal, cropped"]
-- ["mirror_crop.png"]
+- ["17.png", "Mandelbulb fractal, cropped and coloured"]
+- ["mirror_crop.png", "Generative geometric pattern"]
+- ["megan-streak-2.jpg"]
 - ["sand-tree.png"]
 - ["sand-wide.png", "Simulation of falling sand"]
-- ["terminal-renderer.png"]
+- ["terminal-renderer.png", "Rendering in the terminal"]
 - ["terminal-renderer-long.png"]
 - ["moon.jpg", "<a href=\"https://www.youtube.com/watch?v=fdixQDPA2h0\">Moon</a>"]
 - ["6.png"]

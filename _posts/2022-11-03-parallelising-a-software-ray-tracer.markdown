@@ -33,4 +33,4 @@ A presentation given to Tarides colleagues on the 3rd November 2022, which was a
 ##### Links:
 
 - [Github repository](https://github.com/benmandrew/Otorus)
-- [Slide deck](https://benmandrew.s3.eu-west-2.amazonaws.com/parallel/parallelising-a-software-ray-tracer.pdf)
+- [Slide deck]({{ site.s3_path }}/parallel/parallelising-a-software-ray-tracer.pdf)

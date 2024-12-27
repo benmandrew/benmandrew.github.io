@@ -17,5 +17,5 @@ LSR and DTLSR are *routing* protocols for running on network routers. They use a
 
 ##### Links:
 
-- The [dissertation itself](https://benmandrew.s3.amazonaws.com/dtlsr/dtlsr.pdf) (PDF).
+- The [dissertation itself]({{ site.s3_path }}/dtlsr/dtlsr.pdf) (PDF).
 - DTLSR [GitHub repository](https://github.com/benmandrew/DTLSR).

@@ -47,4 +47,4 @@ A presentation given to Tarides colleagues on the 13th March 2024, which was a r
 ##### Links:
 
 - [Github repository](https://github.com/benmandrew/mirror)
-- Slide deck ([pdf](https://benmandrew.s3.eu-west-2.amazonaws.com/mirror/rendering-geometric-patterns.pdf), [odp](https://benmandrew.s3.eu-west-2.amazonaws.com/mirror/rendering-geometric-patterns.odp))
+- Slide deck ([pdf]({{ site.s3_path }}/mirror/rendering-geometric-patterns.pdf), [odp]({{ site.s3_path }}/mirror/rendering-geometric-patterns.odp))
