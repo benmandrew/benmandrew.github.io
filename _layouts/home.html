@@ -28,23 +28,16 @@
 
         <p>I enjoy making computer science more accessible, whether by writing articles, making fun interactive projects, or just rambling to passers-by. You can check out my blog <a href="/articles">here</a>.</p>
     </div>
-    <div style="padding-top: 10px;">
 
-      <h2 id="projects">Latest Posts</h2>
-      <hr>
-      <div class="post-list row">
-        {%- for i in (0..2) -%}
-        <div class="col-sm-4 justify-content-center" style="padding-bottom: 15px">
-          <a class="card h-100" href="{{ site.posts[i].url }}">
-            <img src="{{ site.s3_path }}/{{ site.posts[i].header }}"
-              height="150px"
-              style="object-fit: cover; image-rendering: {{ site.posts[i].header_rendering }};">
-            <h5 class="card-body" style="margin-bottom: 1px;">{{ site.posts[i].title | escape }}</h5>
-          </a>
-        </div>
-        {%- endfor -%}
+      <div style="padding-top: 30px;">
+        <h2>Publications</h2>
+        <hr>
+        <ul>
+          <li>
+            Ben M. Andrew. <b>Weakening Goals in Logical Specifications</b>. Rigorous State-Based Methods (ABZ) 2025. To Appear. <a href="{{ site.s3_path }}/abz2025/slides.pdf">Slides</a>.
+          </li>
+        </ul>
       </div>
-    </div>
 
       <div style="padding-top: 30px;">
         <h2>Professional Activities</h2>
