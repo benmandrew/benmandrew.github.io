@@ -133,6 +133,12 @@ games:
     "Strategy game inspired by the flash game \"Warfare 1917\""
   ]
 - [
+    "Monopoly Deal",
+    "/articles/curses-terminal-card-game",
+    "Python, Curses",
+    "Terminal implementation of the Monopoly Deal card game over the network"
+  ]
+- [
     "Cosmic Taxi",
     "/articles/cosmic-taxi",
     "Unity/C#",
