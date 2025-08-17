@@ -43,6 +43,16 @@ fib:
     ret            ; Return
 ```
 
+## The Tiniest Binary
+
+Instead of using provided C functions from `libc`, we can interact with the kernel directly through *syscalls*. This is done by using a special `syscall` instruction, and I use it mostly to write to the terminal and read user input. Doing this allows us to store *only* our code in our output binary. Otherwise, assuming static linking of `libc`, our binary would be vastly larger. In total my binary comes out to `11.3KB`, and a C *"hello world"* application using `printf` comes out to `832KB`.
+
+### Docker
+
+I wanted to package the binary up into a Docker image so that people could run it without installing its dependencies, and I took it as a challenge to try to minimise the size of the image as much as possible. I first used `alpine` as a base to build the binary and run it with `CMD`, which came out to `25.6MB`. Seeing that `alpine` is only `8.32MB` itself, I realised that not only were all of the files in the working directory being included in the final image, but so too were the dependencies that I needed to build the binary. To fix this, I used a multi-stage build with a second stage that takes only the binary from the first builder stage, dropping the image size to `8.32MB` --- this is `alpine` plus the imperceptible binary.
+
+I was happy with this and didn't think it was possible to reduce further, but I then discovered that Docker runs syscalls on the *host kernel*, and so I don't need Linux in the image at all. Using the empty `scratch` image in the second stage, I dropped the image size to `11.3KB`, which is `1.71KB` when compressed. Pretty good.
+
 ## Aside: Arch Linux
 
 The personal dev machine I usually use is an M1 Macbook Pro (kept from my last job, thank you French labour laws), which notably is based on ARM, not x86. After about five seconds of researching how to write ARM assembly for the Darwin architecture, I realised that that would be horrible and that I should do x86 instead. I busted out my old ThinkPad T450 that got me through my third year of undergrad --- bought after my last laptop had an unfortunate run-in with my cup of coffee --- and realised I'd put Ubuntu server on it at some point and forgotten the password. I thought I'd take the opportunity to install Arch Linux and use it for this project. It's an old laptop that struggled even with Ubuntu, but Arch is very snappy, and it was both informative and very fun doing all of the configuration. Arch's minimalism is something I'd like to experiment more with in the future.
@@ -55,4 +65,5 @@ Mostly, this project has made me grateful for high-level languages and modern to
 
 ## Links
 - [TTT86 GitHub repository](https://github.com/benmandrew/ttt86)
+- [TTT86 Docker Hub repository](https://hub.docker.com/repository/docker/benmandrew/ttt86/general)
 - [NASM Assembly Quick Reference](https://www.cs.uaf.edu/2017/fall/cs301/reference/x86_64.html)
