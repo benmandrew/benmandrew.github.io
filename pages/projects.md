@@ -60,6 +60,12 @@ systems:
     "Undergraduate thesis project implementing Delay-Tolerant Link-State Routing, tested on the CORE network emulator"
   ]
 - [
+    "TTT86",
+    "/articles/tic-tac-toe-x86-assembly",
+    "x86 Assembly",
+    "Tic-Tac-Toe in x86 assembly, using direct syscalls"
+  ]
+- [
     "Olzw", "/articles/ocaml-tricks-for-long-computations", "OCaml", "Lempel-Ziv-Welch (LZW) streaming compressor and decompressor for ASCII text files"
   ]
 - [
