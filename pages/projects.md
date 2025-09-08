@@ -145,6 +145,12 @@ games:
     "Terminal implementation of the Monopoly Deal card game over the network"
   ]
 - [
+    "Munch",
+    "https://github.com/benmandrew/munch",
+    "Rust",
+    "Pacman clone using the ggez game engine"
+  ]
+- [
     "Cosmic Taxi",
     "/articles/cosmic-taxi",
     "Unity/C#",

@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Curses Card Game in the Terminal"
+title:      "Online Card Game in the Terminal"
 date:       2025-08-09
 categories: articles
 tag:        "Article"
